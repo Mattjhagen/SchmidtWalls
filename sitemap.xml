@@ -11,13 +11,27 @@
       <image:title>Timber retaining wall by Schmidt Construction in Omaha</image:title>
     </image:image>
   </url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-bellevue.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-papillion.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-council-bluffs.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-elkhorn.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-la-vista.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/concrete-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Service pages -->
+  <url><loc>https://www.schmidtwalls.com/retaining-walls.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.schmidtwalls.com/concrete.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.schmidtwalls.com/seawalls.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.schmidtwalls.com/landscapes-hardscapes.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.schmidtwalls.com/remodeling.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <!-- Content pages -->
+  <url><loc>https://www.schmidtwalls.com/gallery.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/reviews.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/project-map.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/why-us.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/faq.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/contact.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- City landing pages -->
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-bellevue.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-papillion.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-council-bluffs.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-elkhorn.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.schmidtwalls.com/retaining-walls-la-vista.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.schmidtwalls.com/concrete-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.schmidtwalls.com/concrete-papillion.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.schmidtwalls.com/seawalls-council-bluffs.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
