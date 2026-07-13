@@ -1,16 +1,31 @@
- import Shell from "@/components/shared/Shell";
+import Shell from "@/components/shared/Shell";
 import { createClient } from "@/lib/supabase/server";
-import { money } from "@/lib/utils";
 
-const nav = [
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/timeclock", label: "Time Clock" },
-  { href: "/estimates", label: "Estimates" },
-  { href: "/customers", label: "Customers" },
-];
+function money(n: number) {
+  return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 0 });
+}
 
 export default async function Dashboard() {
   const supabase = await createClient();
+
+  // Check if current user is admin (to show admin link)
+  const { data: { user } } = await supabase.auth.getUser();
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user?.id ?? "")
+    .single();
+
+  const isAdmin = profile?.role === "admin";
+
+  const nav = [
+    { href: "/dashboard", label: "Dashboard" },
+    { href: "/timeclock", label: "Time Clock" },
+    { href: "/estimates", label: "Estimates" },
+    { href: "/customers", label: "Customers" },
+    ...(isAdmin ? [{ href: "/admin", label: "👤 Manage Users" }] : []),
+  ];
+
   const { data: ests } = await supabase.from("estimates").select("status,total");
   const list: { status: string; total: number }[] = (ests ?? []) as { status: string; total: number }[];
   const pipeline = list.filter((e) => ["sent","viewed","changes_requested"].includes(e.status))
@@ -38,6 +53,9 @@ export default async function Dashboard() {
       </div>
       <p style={{ color: "#64748b", marginTop: 24, fontSize: 14 }}>
         Welcome back. Use <b>Time Clock</b> to punch in against a job, or <b>Estimates → New</b> to build a proposal and email it to a customer.
+        {isAdmin && (
+          <> Head to <b><a href="/admin" style={{ color: "#206BD4" }}>Manage Users</a></b> to invite employees or customers.</>
+        )}
       </p>
     </Shell>
   );
