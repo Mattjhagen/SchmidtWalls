@@ -32,7 +32,7 @@ Omaha, Bellevue, Papillion, La Vista, Elkhorn, Gretna, Council Bluffs (IA), and 
 
 ## Pages
 - Home / services / gallery / project map / reviews / FAQ / free estimate: https://www.schmidtwalls.com/
-- Client & Employee Portal: https://schmidtportal.onrender.com/
+- Client & Employee Portal: https://login.schmidtwalls.com/
 
 ## Contact
 Call (402) 320-2600 or request a free estimate at https://www.schmidtwalls.com/#estimate
