@@ -23,19 +23,47 @@
 {"@type":"ListItem","position":1,"name":"Home","item":"https://www.schmidtwalls.com/"},
 {"@type":"ListItem","position":2,"name":"Retaining Walls","item":"https://www.schmidtwalls.com/retaining-walls.html"}]}</script>
 <style>
+/* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(15,23,42,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{color:#fff;font-weight:800;font-size:1.15rem;letter-spacing:-.01em}
+  .brand span{color:var(--accent-light)}
+  .navlinks{display:flex;gap:6px;align-items:center}
+  .navlinks>a,.navitem>button{color:#cbd5e1;text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s;background:none;border:none;cursor:pointer;font-family:inherit;padding:8px 12px;border-radius:8px;display:inline-flex;align-items:center;gap:5px}
+  .navlinks>a:hover,.navitem>button:hover{color:#fff;background:rgba(255,255,255,.06)}
+  .navitem{position:relative}
+  .navitem>button .caret{width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform .25s}
+  .navitem:hover>button .caret,.navitem:focus-within>button .caret{transform:rotate(225deg) translateY(2px)}
+  /* dropdown panel */
+  .dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 44px -18px rgba(15,23,42,.4);padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+  .navitem:hover .dropdown,.navitem:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+  /* bridge so hover doesn't drop between button and panel */
+  .navitem::after{content:'';position:absolute;top:100%;left:0;right:0;height:12px}
+  .dropdown a{display:flex;flex-direction:column;gap:1px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--ink);transition:background .15s}
+  .dropdown a:hover{background:#f1f5f9}
+  .dropdown a .d-title{font-size:.9rem;font-weight:700;color:var(--ink)}
+  .dropdown a .d-sub{font-size:.78rem;color:var(--muted)}
+  .navcta{background:var(--accent);color:#fff;padding:9px 18px;border-radius:9px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s,transform .2s;white-space:nowrap}
+  .navcta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .navphone{color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;letter-spacing:.01em;transition:color .2s;white-space:nowrap}
+  .navphone:hover{color:var(--accent-light)}
+  /* portal link accent */
+  .navportal{color:#fff !important}
+  .navportal:hover{color:var(--accent-light) !important}
+  /* mobile hamburger */
+  .navburger{display:none;background:none;border:none;color:#fff;cursor:pointer;flex-direction:column;gap:5px;padding:8px}
+  .navburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+  .mobile-menu{display:none;position:fixed;inset:66px 0 0;background:rgba(11,18,32,.98);backdrop-filter:blur(8px);z-index:49;padding:24px;overflow-y:auto}
+  .mobile-menu.open{display:block}
+  .mobile-menu a{display:block;color:#e2e8f0;text-decoration:none;font-size:1.05rem;font-weight:600;padding:14px 8px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .mobile-menu .m-group{color:var(--accent-light);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:18px 8px 4px}
+  @media(max-width:900px){.navphone{display:none}}
+  @media(max-width:820px){.navlinks{display:none}.navburger{display:flex}}
   :root{--slate:#0f172a;--accent:#d97706;--accent-l:#f59e0b;--blue:#206BD4;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',system-ui,sans-serif;color:var(--slate);background:var(--bg);line-height:1.7}
   a{color:var(--accent)}
   .wrap{max-width:960px;margin:0 auto;padding:0 24px}
-  nav{background:var(--slate);padding:16px 0}
-  nav .wrap{display:flex;justify-content:space-between;align-items:center}
-  nav .brand{color:#fff;font-weight:800;font-size:1.2rem;text-decoration:none}
-  nav .brand span{color:var(--blue)}
-  nav .links{display:flex;gap:18px;align-items:center}
-  nav .links a{color:#cbd5e1;text-decoration:none;font-size:.9rem;font-weight:500}
-  nav .links a:hover{color:#fff}
-  nav a.cta{background:var(--accent);color:#fff;padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:700;font-size:.9rem}
   .hero{position:relative;background:linear-gradient(100deg,rgba(11,18,32,.68),rgba(11,18,32,.12)),url('images/timber-terraced-hostas.jpg');background-size:cover;background-position:center;color:#fff;padding:96px 0}
   .hero h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800;max-width:18ch;line-height:1.08}
   .hero p{font-size:1.15rem;max-width:46ch;margin-top:16px;color:#e2e8f0}
@@ -56,17 +84,77 @@
   @media(max-width:640px){.services{grid-template-columns:1fr}}
 </style></head>
 <body>
-<nav><div class="wrap">
-  <a class="brand" href="/">SCHMIDT<span>.</span></a>
-  <div class="links">
-    <a href="/retaining-walls.html">Retaining Walls</a>
-    <a href="/concrete.html">Concrete</a>
-    <a href="/seawalls.html">Seawalls</a>
-    <a href="/landscapes-hardscapes.html">Hardscapes</a>
-    <a href="/remodeling.html">Remodeling</a>
-    <a class="cta" href="tel:+14023202600">(402) 320-2600</a>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="/"><img src="images/logo-white-text.png" alt="Schmidt Construction" class="brand-logo"></a>
+
+    <div class="navlinks">
+      <!-- Services dropdown -->
+      <div class="navitem">
+        <button aria-haspopup="true">Services <i class="caret"></i></button>
+        <div class="dropdown">
+          <a href="retaining-walls.html"><span class="d-title">Retaining Walls</span><span class="d-sub">Block, timber &amp; commercial</span></a>
+          <a href="concrete.html"><span class="d-title">Concrete &amp; Driveways</span><span class="d-sub">Flatwork, stamped &amp; decorative</span></a>
+          <a href="seawalls.html"><span class="d-title">Seawalls</span><span class="d-sub">Lakefront &amp; waterfront</span></a>
+          <a href="landscapes-hardscapes.html"><span class="d-title">Landscapes &amp; Hardscapes</span><span class="d-sub">Patios, steps &amp; grading</span></a>
+          <a href="remodeling.html"><span class="d-title">Remodeling</span><span class="d-sub">Kitchens, baths &amp; basements</span></a>
+        </div>
+      </div>
+
+      <!-- Our Work dropdown -->
+      <div class="navitem">
+        <button aria-haspopup="true">Our Work <i class="caret"></i></button>
+        <div class="dropdown">
+          <a href="/#work"><span class="d-title">Before &amp; After</span><span class="d-sub">See the transformation</span></a>
+          <a href="gallery.html"><span class="d-title">Project Gallery</span><span class="d-sub">Recent retaining walls</span></a>
+          <a href="project-map.html"><span class="d-title">Project Map</span><span class="d-sub">20+ jobs across the metro</span></a>
+          <a href="reviews.html"><span class="d-title">Reviews</span><span class="d-sub">What customers say</span></a>
+        </div>
+      </div>
+
+      <!-- Company dropdown -->
+      <div class="navitem">
+        <button aria-haspopup="true">Company <i class="caret"></i></button>
+        <div class="dropdown">
+          <a href="why-us.html"><span class="d-title">Why Choose Us</span><span class="d-sub">Family-owned since 1976</span></a>
+          <a href="faq.html"><span class="d-title">FAQ</span><span class="d-sub">Costs &amp; common questions</span></a>
+          <a href="contact.html"><span class="d-title">Contact</span><span class="d-sub">Get a free estimate</span></a>
+          <a href="https://login.schmidtwalls.com/" target="_blank" rel="noopener"><span class="d-title">Client &amp; Employee Portal ↗</span><span class="d-sub">Estimates, time clock &amp; billing</span></a>
+        </div>
+      </div>
+
+      <a class="navportal" href="https://login.schmidtwalls.com/" target="_blank" rel="noopener">Portal Login</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="navphone" href="tel:+14023202600">(402) 320-2600</a>
+      <a class="navcta" href="/#estimate">Free Estimate</a>
+      <button class="navburger" id="navburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
-</div></nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="m-group">Services</div>
+    <a href="/#services">Retaining Walls</a>
+    <a href="/#services">Concrete &amp; Driveways</a>
+    <a href="/#services">Seawalls</a>
+    <a href="/#services">Landscapes &amp; Hardscapes</a>
+    <a href="/#services">Remodeling</a>
+    <div class="m-group">Our Work</div>
+    <a href="/#work">Before &amp; After</a>
+    <a href="#gallery">Project Gallery</a>
+    <a href="#map">Project Map</a>
+    <a href="#reviews">Reviews</a>
+    <div class="m-group">Company</div>
+    <a href="#why">Why Choose Us</a>
+    <a href="/#estimate">Contact</a>
+    <a href="https://login.schmidtwalls.com/" target="_blank" rel="noopener">Client &amp; Employee Portal ↗</a>
+    <a href="/#estimate" style="color:var(--accent-light);font-weight:800">Get a Free Estimate →</a>
+  </div>
+</nav>
 
 <div class="hero"><div class="wrap">
   <h1>Retaining Walls</h1>
@@ -119,4 +207,17 @@
   <a href="https://www.schmidtwalls.com">Home</a> &middot;
   <a href="https://login.schmidtwalls.com/" target="_blank" rel="noopener">Portal Login</a>
 </div></footer>
+<script>
+(function(){
+  var burger=document.getElementById('navburger'),menu=document.getElementById('mobileMenu');
+  if(burger&&menu){burger.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    document.body.style.overflow=open?'hidden':'';
+  });menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){
+    menu.classList.remove('open');burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  });});}
+})();
+</script>
 </body></html>
