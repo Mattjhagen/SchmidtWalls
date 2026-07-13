@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  --brand-slate: #1e293b;   /* slate-800 */
+  --brand-slate-2: #334155; /* slate-700 */
+  --brand-amber: #f59e0b;   /* amber-500 */
+  --brand-blue: #206BD4;    /* Schmidt blue */
+  --brand-amber-2: #d97706; /* amber-600 */
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+}
+
+@theme inline {
+  --color-brand: var(--brand-slate);
+  --color-accent: var(--brand-amber);
+}
+
+* { box-sizing: border-box; }
+html, body { padding: 0; margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--brand-slate);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+}
+
+.btn { display:inline-flex; align-items:center; gap:.5rem; padding:.55rem 1rem; border-radius:.6rem; font-weight:600; font-size:.9rem; cursor:pointer; border:1px solid transparent; transition:all .15s; }
+.btn-primary { background: var(--brand-blue); color:#fff; }
+.btn-primary:hover { background: #1a56ad; color:#fff; }
+.btn-ghost { background:transparent; border-color: var(--border); color: var(--brand-slate); }
+.btn-ghost:hover { background:#f1f5f9; }
+.card { background: var(--card); border:1px solid var(--border); border-radius:.9rem; padding:1.25rem; }
+.badge { font-size:.72rem; font-weight:700; padding:.2rem .55rem; border-radius:999px; text-transform:uppercase; letter-spacing:.03em; }
+.input { width:100%; padding:.55rem .7rem; border:1px solid var(--border); border-radius:.55rem; font-size:.9rem; }
+.input:focus { outline:2px solid var(--brand-blue); border-color:transparent; }
+
+.btn-blue { background: var(--brand-blue); color:#fff; }
+.btn-blue:hover { background:#1a56ad; }
