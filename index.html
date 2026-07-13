@@ -166,14 +166,13 @@
 
   /* HERO */
   .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;background:#0b1220}
-  .hero-photo{position:absolute;inset:0;background-size:cover;background-position:center 40%}
-  /* Light, left-anchored scrim only for text legibility — keeps the photo bright, no slideshow */
-  .hero-scrim{position:absolute;inset:0;background:
-     linear-gradient(100deg, rgba(11,18,32,.60) 0%, rgba(11,18,32,.32) 34%, rgba(11,18,32,.05) 60%, rgba(11,18,32,0) 80%)}
+  .hero-photo{position:absolute;inset:0;background-size:cover;background-position:center 30%}
+  /* No scrim — photo stays fully bright. Text legibility via text-shadow only. */
+  .hero-scrim{display:none}
   .hero-inner{position:relative;z-index:3;padding:120px 0}
-  .hero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;max-width:15ch;margin-bottom:22px}
+  .hero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;max-width:15ch;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.5),0 0 4px rgba(0,0,0,.3)}
   .hero h1 em{color:var(--accent-light);font-style:normal}
-  .hero p.lead{color:#dbe2ea;font-size:1.2rem;max-width:46ch;margin-bottom:34px}
+  .hero p.lead{color:#fff;font-size:1.2rem;max-width:46ch;margin-bottom:34px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
   .btns{display:flex;gap:14px;flex-wrap:wrap}
   .btn-primary{background:var(--accent);color:#fff;padding:15px 30px;border-radius:11px;font-weight:700;text-decoration:none;font-size:1.02rem;box-shadow:0 10px 24px -8px rgba(217,119,6,.55);transition:transform .2s,box-shadow .2s,background .2s}
   .btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(217,119,6,.6)}
@@ -429,8 +428,7 @@
 </nav>
 
 <header class="hero">
-  <div class="hero-photo" style="background-image:url('images/schmidt-block-wall-branded.jpg')"></div>
-  <div class="hero-scrim"></div>
+  <div class="hero-photo" style="background-image:url('images/timber-retaining-wall-hero.jpg')"></div>
   <div class="wrap hero-inner">
     <p class="eyebrow">Omaha, NE · Est. 1976</p>
     <h1>Retaining Walls, Concrete &amp; <em>Remodeling</em> Done Right</h1>
