@@ -1,0 +1,17 @@
+# Editor live-preview snapshots (auto-generated)
+.versions/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+
+# Source customer data — NEVER commit (contains private addresses/PII)
+*.xlsx
+*.csv
+CustomerLists/
+Schmidt-Photos/

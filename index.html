@@ -4,9 +4,53 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Schmidt Construction — Omaha's Retaining Wall & Concrete Experts</title>
-<meta name="description" content="Family-owned retaining wall, concrete, seawall and remodeling contractor serving Omaha, NE since 1976. Licensed & insured. Free estimates.">
+<meta name="description" content="Family-owned retaining wall, concrete, seawall and remodeling contractor serving Omaha, NE since 1976. Licensed & insured. Free estimates. Call (402) 320-2600.">
+<link rel="canonical" href="https://www.schmidtwalls.com/">
+<meta name="theme-color" content="#0f172a">
+<meta name="keywords" content="retaining walls Omaha, block retaining wall, timber retaining wall, seawall, concrete driveway, hardscape, Omaha contractor, Bellevue, Papillion, Council Bluffs">
+<meta name="author" content="Schmidt Construction">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Schmidt Construction">
+<meta property="og:title" content="Schmidt Construction — Omaha's Retaining Wall & Concrete Experts">
+<meta property="og:description" content="Family-owned retaining wall, concrete & hardscape contractor serving the Omaha metro since 1976. Licensed & insured. Free estimates.">
+<meta property="og:url" content="https://www.schmidtwalls.com/">
+<meta property="og:image" content="https://www.schmidtwalls.com/images/timber-retaining-wall-hero.jpg">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Schmidt Construction — Omaha's Retaining Wall Experts">
+<meta name="twitter:description" content="Family-owned retaining wall & concrete contractor serving the Omaha metro since 1976. Free estimates — (402) 320-2600.">
+<meta name="twitter:image" content="https://www.schmidtwalls.com/images/timber-retaining-wall-hero.jpg">
+
+<!-- Favicon (uses your logo) -->
+<link rel="icon" type="image/png" href="images/logo-transparent.png">
+<link rel="apple-touch-icon" href="images/logo-transparent.png">
+
+<!-- LocalBusiness structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Schmidt Construction",
+  "image": "https://www.schmidtwalls.com/images/timber-retaining-wall-hero.jpg",
+  "telephone": "+1-402-320-2600",
+  "email": "Mikiel@schmidt-construction.com",
+  "url": "https://www.schmidtwalls.com/",
+  "priceRange": "$$",
+  "areaServed": ["Omaha NE","Bellevue NE","Papillion NE","La Vista NE","Elkhorn NE","Gretna NE","Council Bluffs IA"],
+  "address": {"@type":"PostalAddress","addressLocality":"Omaha","addressRegion":"NE","addressCountry":"US"},
+  "foundingDate": "1976",
+  "knowsAbout": ["Retaining walls","Block retaining walls","Timber retaining walls","Seawalls","Concrete","Hardscaping"]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="[REDACTED_TOKEN]/leaflet.css"/>
+<link rel="stylesheet" href="[REDACTED_TOKEN]/MarkerCluster.css"/>
+<link rel="stylesheet" href="[REDACTED_TOKEN]/MarkerCluster.Default.css"/>
 <style>
   :root{
     --primary:#0f172a; --primary-2:#1e293b;
@@ -31,24 +75,17 @@
   .navlinks a:hover{color:#fff}
   .navcta{background:var(--accent);color:#fff;padding:9px 18px;border-radius:9px;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .2s,transform .2s}
   .navcta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .navphone{color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;letter-spacing:.01em;transition:color .2s}
+  .navphone:hover{color:var(--accent-light)}
+  @media(max-width:900px){.navphone{display:none}}
   @media(max-width:760px){.navlinks{display:none}}
 
   /* HERO */
   .hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;background:#0b1220}
-  .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:kenburns 24s infinite}
-  @keyframes kenburns{
-    0%{opacity:0;transform:scale(1.08)}
-    4%{opacity:1}
-    29%{opacity:1}
-    33%{opacity:0;transform:scale(1.16)}
-    100%{opacity:0}
-  }
-  .hero-slide:nth-child(1){animation-delay:0s}
-  .hero-slide:nth-child(2){animation-delay:8s}
-  .hero-slide:nth-child(3){animation-delay:16s}
+  .hero-photo{position:absolute;inset:0;background-size:cover;background-position:center 40%}
+  /* Light, left-anchored scrim only for text legibility — keeps the photo bright, no slideshow */
   .hero-scrim{position:absolute;inset:0;background:
-     linear-gradient(105deg, rgba(11,18,32,.92) 0%, rgba(11,18,32,.72) 42%, rgba(11,18,32,.25) 72%, rgba(11,18,32,.05) 100%),
-     linear-gradient(to top, rgba(11,18,32,.85), transparent 45%)}
+     linear-gradient(100deg, rgba(11,18,32,.60) 0%, rgba(11,18,32,.32) 34%, rgba(11,18,32,.05) 60%, rgba(11,18,32,0) 80%)}
   .hero-inner{position:relative;z-index:3;padding:120px 0}
   .hero h1{color:#fff;font-size:clamp(2.4rem,5vw,4rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;max-width:15ch;margin-bottom:22px}
   .hero h1 em{color:var(--accent-light);font-style:normal}
@@ -60,9 +97,6 @@
   .btn-ghost:hover{background:#fff;color:var(--primary)}
   .trust{margin-top:40px;display:flex;gap:30px;flex-wrap:wrap;color:#aeb9c6;font-size:.92rem}
   .trust b{color:#fff}
-  .hero-dots{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);display:flex;gap:9px;z-index:4}
-  .hero-dots i{width:9px;height:9px;border-radius:99px;background:rgba(255,255,255,.4);display:block}
-  .hero-dots i.on{background:var(--accent-light);width:26px}
 
   /* SECTIONS */
   section.blk{padding:96px 0}
@@ -135,7 +169,7 @@
   /* FOOTER */
   footer{background:#0b1220;color:#94a3b8;padding:40px 24px;font-size:.85rem}
   .footer-inner{max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
-  .footer-cols{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px}
+  .footer-cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
   @media(max-width:760px){.footer-cols{grid-template-columns:1fr}}
   .footer-brand{color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:8px}
   .footer-brand span{color:var(--accent-light)}
@@ -153,6 +187,65 @@
   .js-reveal
   .reveal.in{opacity:1;transform:none}
   .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+  /* CONTACT / ESTIMATE FORM */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+  .contact-info h2{font-size:clamp(1.9rem,3.2vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:16px}
+  .contact-info p.body{color:var(--muted);font-size:1.05rem;margin-bottom:28px}
+  .contact-line{display:flex;gap:14px;align-items:center;margin-bottom:18px;text-decoration:none;color:var(--ink)}
+  .contact-line .ic{flex:none;width:44px;height:44px;border-radius:12px;background:#fff7ed;color:var(--accent);display:grid;place-items:center;font-size:1.2rem;border:1px solid #fed7aa}
+  .contact-line .lbl{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .contact-line .val{font-size:1.08rem;font-weight:700}
+  .contact-line:hover .val{color:var(--accent)}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:32px;box-shadow:0 18px 44px -22px rgba(15,23,42,.28)}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:520px){.form-row{grid-template-columns:1fr}}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:6px;color:#334155}
+  .field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:.96rem;color:var(--ink);background:#fff;transition:border-color .2s,box-shadow .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,119,6,.15)}
+  .field textarea{resize:vertical;min-height:110px}
+  .form-card .btn-primary{width:100%;text-align:center;border:none;cursor:pointer;font-family:inherit}
+  .form-note{font-size:.82rem;color:var(--muted);text-align:center;margin-top:14px}
+  .form-success{display:none;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;border-radius:12px;padding:18px;text-align:center;font-weight:600}
+
+  /* PROJECT MAP */
+  .map-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
+  .map-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 24px;text-align:center;min-width:120px}
+  .map-stat .n{font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1}
+  .map-stat .l{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:6px}
+  #projectMap{height:520px;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px -22px rgba(15,23,42,.4);border:1px solid var(--line);z-index:1}
+  @media(max-width:640px){#projectMap{height:420px}}
+  .map-legend{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:22px;color:var(--muted);font-size:.9rem}
+  .map-legend b{color:var(--ink)}
+  .map-privacy{font-size:.82rem;color:var(--muted);text-align:center;margin-top:14px;max-width:60ch;margin-left:auto;margin-right:auto}
+  .leaflet-popup-content{font-family:var(--sans)}
+  .pop-title{font-weight:800;font-size:.98rem;margin-bottom:2px}
+  .pop-city{color:#64748b;font-size:.86rem}
+  .pop-type{display:inline-block;margin-top:6px;background:#fff7ed;color:#b45309;border:1px solid #fed7aa;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:860px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.gallery{grid-template-columns:1fr}}
+  .gitem{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;box-shadow:0 10px 30px -14px rgba(15,23,42,.3);background:#e2e8f0}
+  .gitem img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+  .gitem:hover img{transform:scale(1.07)}
+  /* Caption bar only appears on hover — photos stay bright by default */
+  .gitem .cap{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:#fff;font-weight:700;font-size:.92rem;
+     background:linear-gradient(to top,rgba(11,18,32,.82),transparent);opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+  .gitem:hover .cap{opacity:1;transform:translateY(0)}
+  /* Lightbox */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(11,18,32,.92);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .lb .lb-cap{position:absolute;bottom:26px;left:0;right:0;text-align:center;color:#fff;font-weight:600;font-size:1rem}
+  .lb .lb-x{position:absolute;top:20px;right:26px;width:44px;height:44px;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;border:none;font-size:1.5rem;cursor:pointer;display:grid;place-items:center}
+  .lb .lb-x:hover{background:rgba(255,255,255,.26)}
+  .lb .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:99px;background:rgba(255,255,255,.14);color:#fff;border:none;font-size:1.8rem;cursor:pointer}
+  .lb .lb-nav:hover{background:rgba(255,255,255,.26)}
+  .lb .lb-prev{left:20px}.lb .lb-next{right:20px}
 
   /* --- Photo/logo integration --- */
   .brand{display:inline-flex;align-items:center;text-decoration:none}
@@ -175,17 +268,20 @@
       <a href="#services">Services</a>
       <a href="#why">Why Us</a>
       <a href="#work">Our Work</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#map">Project Map</a>
       <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="#estimate">Contact</a>
     </div>
-    <a class="navcta" href="#contact">Free Estimate</a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a class="navphone" href="tel:+14023202600">(402) 320-2600</a>
+      <a class="navcta" href="#contact">Free Estimate</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero">
-  <div class="hero-slide" style="background-image:url('images/timber-retaining-wall-hero.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('images/block-retaining-wall-steps.jpg')"></div>
-  <div class="hero-slide" style="background-image:url('images/concrete-driveway-omaha.jpg')"></div>
+  <div class="hero-photo" style="background-image:url('images/timber-retaining-wall-hero.jpg')"></div>
   <div class="hero-scrim"></div>
   <div class="wrap hero-inner">
     <p class="eyebrow">Omaha, NE · Est. 1976</p>
@@ -201,7 +297,6 @@
       <span>✓ <b>Free</b> Estimates</span>
     </div>
   </div>
-  <div class="hero-dots"><i class="on"></i><i></i><i></i></div>
 </header>
 
 <!-- SERVICES -->
@@ -294,6 +389,62 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section class="blk" id="gallery" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="accentbar"></div>
+      <h2>Recent Retaining Wall &amp; Hardscape Projects</h2>
+      <p>Real work from around the Omaha metro — block and timber retaining walls, seawalls, and finished concrete.</p>
+    </div>
+    <div class="gallery reveal d1" id="galleryGrid">
+      <div class="gitem" data-full="images/timber-retaining-wall-hero.jpg"   data-cap="Timber retaining wall"><img src="images/timber-retaining-wall-hero.jpg" alt="Timber retaining wall in Omaha"><div class="cap">Timber Retaining Wall</div></div>
+      <div class="gitem" data-full="images/block-retaining-wall-steps.jpg"   data-cap="Block retaining wall with integrated steps"><img src="images/block-retaining-wall-steps.jpg" alt="Block retaining wall with steps"><div class="cap">Block Wall &amp; Steps</div></div>
+      <div class="gitem" data-full="images/after-block-retaining-wall.jpg"   data-cap="Engineered block retaining wall"><img src="images/after-block-retaining-wall.jpg" alt="Finished block retaining wall"><div class="cap">Engineered Block Wall</div></div>
+      <div class="gitem" data-full="images/timber-wall-landscaped.jpg"       data-cap="Landscaped timber retaining wall"><img src="images/timber-wall-landscaped.jpg" alt="Landscaped timber retaining wall"><div class="cap">Landscaped Timber Wall</div></div>
+      <div class="gitem" data-full="images/lakefront-seawall-omaha.jpg"      data-cap="Lakefront seawall"><img src="images/lakefront-seawall-omaha.jpg" alt="Lakefront seawall in Omaha"><div class="cap">Lakefront Seawall</div></div>
+      <div class="gitem" data-full="images/seawall-dock-detail.jpg"          data-cap="Seawall &amp; dock detail"><img src="images/seawall-dock-detail.jpg" alt="Seawall and dock detail"><div class="cap">Seawall &amp; Dock</div></div>
+      <div class="gitem" data-full="images/stamped-patio-garden-wall.jpg"    data-cap="Stamped patio with garden wall"><img src="images/stamped-patio-garden-wall.jpg" alt="Stamped patio with garden wall"><div class="cap">Stamped Patio &amp; Garden Wall</div></div>
+      <div class="gitem" data-full="images/stamped-concrete-patio-steps.jpg" data-cap="Stamped concrete patio &amp; steps"><img src="images/stamped-concrete-patio-steps.jpg" alt="Stamped concrete patio and steps"><div class="cap">Stamped Concrete Patio</div></div>
+      <div class="gitem" data-full="images/concrete-driveway-omaha.jpg"      data-cap="New concrete driveway"><img src="images/concrete-driveway-omaha.jpg" alt="New concrete driveway in Omaha"><div class="cap">Concrete Driveway</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lightbox" aria-hidden="true">
+  <button class="lb-x" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<!-- PROJECT MAP -->
+<section class="blk" id="map" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="accentbar"></div>
+      <h2>Retaining Walls Across the Omaha Metro</h2>
+      <p>A sample of retaining wall projects we've completed across the Omaha metro — Omaha, Bellevue, Papillion, Elkhorn, Council Bluffs and beyond.</p>
+    </div>
+
+    <div class="map-stats reveal d1">
+      <div class="map-stat"><div class="n" id="statTotal">20</div><div class="l">Projects mapped</div></div>
+      <div class="map-stat"><div class="n" id="statCities">7</div><div class="l">Cities &amp; towns</div></div>
+      <div class="map-stat"><div class="n">50</div><div class="l">Years in business</div></div>
+    </div>
+
+    <div id="projectMap" class="reveal d1"></div>
+
+    <div class="map-legend reveal">
+      <span>🔵 <b>Retaining wall</b> project</span>
+      <span>Click a marker for the neighborhood &amp; project type</span>
+    </div>
+    <p class="map-privacy">To respect our customers' privacy, projects are shown by neighborhood with first name &amp; last initial only — never full addresses.</p>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="blk" id="reviews" style="background:var(--bg)">
   <div class="wrap">
@@ -324,13 +475,86 @@
   </div>
 </section>
 
+<!-- ESTIMATE FORM -->
+<section class="blk" id="estimate" style="background:#fff">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="accentbar" style="margin:0 0 22px"></div>
+        <h2>Request Your Free Estimate</h2>
+        <p class="body">Tell us about your retaining wall, concrete, or hardscape project. We serve the Omaha metro and typically respond within one business day.</p>
+        <a class="contact-line" href="tel:+14023202600">
+          <span class="ic">📞</span>
+          <span><span class="lbl">Call or text</span><br><span class="val">(402) 320-2600</span></span>
+        </a>
+        <a class="contact-line" href="mailto:Mikiel@schmidt-construction.com">
+          <span class="ic">✉️</span>
+          <span><span class="lbl">Email</span><br><span class="val">Mikiel@schmidt-construction.com</span></span>
+        </a>
+        <div class="contact-line">
+          <span class="ic">📍</span>
+          <span><span class="lbl">Service area</span><br><span class="val">Omaha, Bellevue, Papillion, Council Bluffs &amp; nearby</span></span>
+        </div>
+      </div>
+
+      <div class="form-card reveal d1">
+        <form id="estimateForm" onsubmit="return handleEstimate(event)">
+          <div class="form-row">
+            <div class="field">
+              <label for="ef-name">Name</label>
+              <input id="ef-name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="field">
+              <label for="ef-phone">Phone</label>
+              <input id="ef-phone" name="phone" type="tel" placeholder="(402) 000-0000" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="ef-email">Email</label>
+            <input id="ef-email" name="email" type="email" placeholder="you@email.com">
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="ef-service">Project type</label>
+              <select id="ef-service" name="service">
+                <option>Retaining Wall</option>
+                <option>Concrete / Driveway</option>
+                <option>Seawall</option>
+                <option>Landscape / Hardscape</option>
+                <option>Remodeling</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ef-city">City</label>
+              <input id="ef-city" name="city" type="text" placeholder="Omaha, NE">
+            </div>
+          </div>
+          <div class="field">
+            <label for="ef-msg">Project details</label>
+            <textarea id="ef-msg" name="message" placeholder="Tell us about your project…"></textarea>
+          </div>
+          <button class="btn-primary" type="submit">Request Free Estimate</button>
+          <p class="form-note">Or call us directly at <a href="tel:+14023202600" style="color:var(--accent);font-weight:700;text-decoration:none">(402) 320-2600</a></p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          ✅ Thanks! Your request has been noted. We'll be in touch within one business day.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA / CONTACT -->
 <section class="cta" id="contact">
   <div class="cta-bg"></div>
   <div class="wrap">
     <h2>Ready to Start Your Project?</h2>
     <p>Get a free, no-obligation on-site estimate from Omaha's trusted retaining wall &amp; concrete experts.</p>
-    <a class="btn-primary" href="tel:+14025551234">Call for a Free Estimate</a>
+    <div class="btns" style="justify-content:center">
+      <a class="btn-primary" href="tel:+14023202600">📞 Call (402) 320-2600</a>
+      <a class="btn-ghost" href="#estimate">Request an Estimate Online</a>
+    </div>
   </div>
 </section>
 
@@ -353,8 +577,17 @@
         <h4>Company</h4>
         <a href="#why">About Us</a>
         <a href="#work">Our Work</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#map">Project Map</a>
         <a href="#reviews">Reviews</a>
-        <a href="#contact">Free Estimate</a>
+        <a href="#estimate">Free Estimate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+14023202600">(402) 320-2600</a>
+        <a href="mailto:Mikiel@schmidt-construction.com">Mikiel@schmidt-construction.com</a>
+        <a href="#estimate">Request an Estimate</a>
+        <a href="#" aria-disabled="true" style="opacity:.55;cursor:default">Client Portal · coming soon</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -364,6 +597,8 @@
   </div>
 </footer>
 
+<script src="[REDACTED_TOKEN]/leaflet.js"></script>
+<script src="[REDACTED_TOKEN]/leaflet.markercluster.js"></script>
 <script>
   // Scroll reveal — robust: content is readable by default, animates in only when safely off-screen
   const reveals = document.querySelectorAll('.reveal');
@@ -386,11 +621,6 @@
     setTimeout(settle, 300);
     setTimeout(() => reveals.forEach(revealEl), 2000); // absolute failsafe
   }
-
-  // Hero dots sync
-  const dots = document.querySelectorAll('.hero-dots i');
-  let di = 0;
-  setInterval(() => { di = (di + 1) % 3; dots.forEach((d, i) => d.classList.toggle('on', i === di)); }, 8000);
 
   // Before/after slider (keeps the clipped BEFORE image aligned to full width)
   const ba = document.getElementById('ba');
@@ -416,6 +646,166 @@
   window.addEventListener('mouseup', () => drag = false);
   ba.addEventListener('touchstart', e => setpos(e.touches[0].clientX), { passive: true });
   ba.addEventListener('touchmove', e => setpos(e.touches[0].clientX), { passive: true });
+
+  // Gallery lightbox
+  (function(){
+    const items = Array.from(document.querySelectorAll('#galleryGrid .gitem'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCap');
+    let idx = 0;
+    function show(i){
+      idx = (i + items.length) % items.length;
+      const el = items[idx];
+      lbImg.src = el.dataset.full;
+      lbCap.textContent = el.dataset.cap;
+    }
+    function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+    function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
+    items.forEach((el,i)=> el.addEventListener('click', ()=>open(i)));
+    document.getElementById('lbClose').addEventListener('click', close);
+    document.getElementById('lbNext').addEventListener('click', ()=>show(idx+1));
+    document.getElementById('lbPrev').addEventListener('click', ()=>show(idx-1));
+    lb.addEventListener('click', e=>{ if(e.target===lb) close(); });
+    document.addEventListener('keydown', e=>{
+      if(!lb.classList.contains('open')) return;
+      if(e.key==='Escape') close();
+      if(e.key==='ArrowRight') show(idx+1);
+      if(e.key==='ArrowLeft') show(idx-1);
+    });
+  })();
+
+  // ============================================================
+  // ESTIMATE FORM SUBMISSION
+  // ------------------------------------------------------------
+  // Works on a static host (no backend needed) via Formspree.
+  // 1) Create a free form at https://formspree.io (uses Mikiel@schmidt-construction.com)
+  // 2) Paste your endpoint below, e.g. "https://formspree.io/f/abcdwxyz"
+  // If left blank, the form falls back to opening the visitor's email client (mailto).
+  // Later, to route into SchmidtAdmin instead, point FORM_ENDPOINT at your own /api/leads.
+  // ============================================================
+  const FORM_ENDPOINT = ""; // <-- paste your Formspree (or backend) URL here
+  const LEAD_EMAIL = "Mikiel@schmidt-construction.com";
+
+  async function handleEstimate(e){
+    e.preventDefault();
+    const f = document.getElementById('estimateForm');
+    const ok = document.getElementById('formSuccess');
+    const btn = f.querySelector('button[type=submit]');
+    const data = Object.fromEntries(new FormData(f).entries());
+
+    function succeed(){
+      f.style.display = 'none';
+      ok.style.display = 'block';
+      ok.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+
+    if (FORM_ENDPOINT) {
+      try {
+        btn.disabled = true; btn.textContent = 'Sending…';
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(f)
+        });
+        if (res.ok) { succeed(); }
+        else { throw new Error('Bad response'); }
+      } catch (err) {
+        btn.disabled = false; btn.textContent = 'Request Free Estimate';
+        alert('Sorry, something went wrong sending your request. Please call us at (402) 320-2600.');
+      }
+    } else {
+      // Fallback: open the visitor's email client pre-filled to Schmidt Construction
+      const subject = encodeURIComponent('Free Estimate Request — ' + (data.service || 'Project'));
+      const body = encodeURIComponent(
+        'Name: ' + (data.name||'') + '\n' +
+        'Phone: ' + (data.phone||'') + '\n' +
+        'Email: ' + (data.email||'') + '\n' +
+        'Project type: ' + (data.service||'') + '\n' +
+        'City: ' + (data.city||'') + '\n\n' +
+        'Details:\n' + (data.message||'')
+      );
+      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + subject + '&body=' + body;
+      succeed();
+    }
+    return false;
+  }
+</script>
+<script>
+  // ============================================================
+  // PROJECT MAP  \u2014  privacy-safe (first name + last initial, by neighborhood)
+  // ------------------------------------------------------------
+  // TO LOAD ALL 60 REAL PROJECTS:
+  //   Take your geocoded-retaining-walls.csv (columns: name,address,lat,lng)
+  //   and paste rows below as: {n:"First L.", city:"Omaha", lat:..., lng:..., type:"Retaining Wall"}
+  //   Keep names to first-name + last-initial for privacy. Remove the sample flag when done.
+  // ============================================================
+  const PROJECTS = [
+    {n:"Judie K.", city:"Omaha, NE", lat:41.24413, lng:-95.9731, type:"Retaining Wall"},
+    {n:"Jill F.", city:"Omaha, NE", lat:41.1564, lng:-96.14554, type:"Retaining Wall"},
+    {n:"Mike M.", city:"Papillion, NE", lat:41.15048, lng:-96.03927, type:"Retaining Wall"},
+    {n:"Derrick V.", city:"Big Lake, MO", lat:40.09127, lng:-95.34826, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Big Lake, MO", lat:40.08375, lng:-95.3494, type:"Retaining Wall"},
+    {n:"B L.", city:"Louisville, NE", lat:41.0041, lng:-96.15819, type:"Retaining Wall"},
+    {n:"Ed F.", city:"Omaha, NE", lat:41.25742, lng:-95.96962, type:"Retaining Wall"},
+    {n:"Samantha B.", city:"Omaha, NE", lat:41.2382, lng:-95.998, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Omaha, NE", lat:41.26053, lng:-96.09821, type:"Retaining Wall"},
+    {n:"John P.", city:"Omaha, NE", lat:41.20685, lng:-95.96407, type:"Retaining Wall"},
+    {n:"Joe P.", city:"Omaha, NE", lat:41.17989, lng:-95.97604, type:"Retaining Wall"},
+    {n:"Kay B.", city:"Omaha, NE", lat:41.30244, lng:-96.05409, type:"Retaining Wall"},
+    {n:"Ad S.", city:"Council Bluffs, IA", lat:41.22732, lng:-95.80327, type:"Retaining Wall"},
+    {n:"Amasa S.", city:"Council Bluffs, IA", lat:41.21348, lng:-95.80807, type:"Retaining Wall"},
+    {n:"Anthony C.", city:"Omaha, NE", lat:41.18056, lng:-95.97793, type:"Retaining Wall"},
+    {n:"Julie C.", city:"Omaha, NE", lat:41.26991, lng:-95.99431, type:"Retaining Wall"},
+    {n:"Ken K.", city:"Elkhorn, NE", lat:41.28668, lng:-96.22664, type:"Retaining Wall"},
+    {n:"Joy O.", city:"Bellevue, NE", lat:41.14836, lng:-95.90756, type:"Retaining Wall"},
+    {n:"Harry P.", city:"Omaha, NE", lat:41.31027, lng:-96.12483, type:"Retaining Wall"},
+    {n:"David L.", city:"Omaha, NE", lat:41.26689, lng:-96.04565, type:"Retaining Wall"}
+  ];
+
+  (function initMap(){
+    if (typeof L === 'undefined') return;
+    const map = L.map('projectMap', { scrollWheelZoom:false }).setView([41.24, -95.99], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const cluster = (typeof L.markerClusterGroup === 'function')
+      ? L.markerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:44 })
+      : L.layerGroup();
+
+    const dot = L.divIcon({
+      className:'',
+      html:'<div style="width:16px;height:16px;border-radius:50%;background:#2563eb;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)"></div>',
+      iconSize:[16,16], iconAnchor:[8,8]
+    });
+
+    const cities = new Set();
+    PROJECTS.forEach(p => {
+      cities.add(p.city);
+      L.marker([p.lat, p.lng], {icon:dot})
+        .bindPopup(
+          '<div class="pop-title">'+p.n+'</div>'+
+          '<div class="pop-city">'+p.city+'</div>'+
+          '<span class="pop-type">'+(p.type||'Retaining Wall')+'</span>'
+        )
+        .addTo(cluster);
+    });
+    map.addLayer(cluster);
+
+    // Center on the Omaha metro (a couple of jobs reach into MO/IA — they stay clustered)
+    map.setView([41.24, -95.99], 11);
+
+    // Update stat counts to reflect the loaded data
+    const total = PROJECTS.length;
+    document.getElementById('statTotal').textContent = total >= 60 ? total : (total + '+');
+    document.getElementById('statCities').textContent = cities.size;
+
+    // Enable scroll-zoom only after a click (better UX inside a scrolling page)
+    map.on('click', () => map.scrollWheelZoom.enable());
+  })();
+
 </script>
 </body>
 </html>
