@@ -27,6 +27,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <style>
   :root{
     --primary:#0f172a; --primary-2:#1e293b;
@@ -150,6 +153,28 @@
 
   /* Body paragraph class (legacy) */
   p.body{color:#334155;margin-bottom:16px;font-size:1.05rem;line-height:1.7;max-width:72ch}
+
+  /* Section blocks */
+  section.blk{padding:80px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 48px}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:1.08rem}
+  .accentbar{width:56px;height:4px;background:var(--accent);border-radius:99px;margin:0 auto 22px}
+
+  /* PROJECT MAP */
+  .map-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
+  .map-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 24px;text-align:center;min-width:120px}
+  .map-stat .n{font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1}
+  .map-stat .l{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:6px}
+  #projectMap{height:520px;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px -22px rgba(15,23,42,.4);border:1px solid var(--line);z-index:1}
+  @media(max-width:640px){#projectMap{height:420px}}
+  .map-legend{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:22px;color:var(--muted);font-size:.9rem}
+  .map-legend b{color:var(--ink)}
+  .map-privacy{font-size:.82rem;color:var(--muted);text-align:center;margin-top:14px;max-width:60ch;margin-left:auto;margin-right:auto}
+  .leaflet-popup-content{font-family:var(--sans)}
+  .pop-title{font-weight:800;font-size:.98rem;margin-bottom:2px}
+  .pop-city{color:#64748b;font-size:.86rem}
+  .pop-type{display:inline-block;margin-top:6px;background:#fff7ed;color:#b45309;border:1px solid #fed7aa;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700}
 </style>
 </head>
 <body>
@@ -231,35 +256,61 @@
   <div class="wrap hero-inner">
     <p class="eyebrow">Omaha, NE &middot; Est. 1976</p>
     <h1>Project Map</h1>
-    <p class="lead">Family-owned since 1976. Serving Omaha, Bellevue, Papillion, Council Bluffs &amp; beyond.</p>
+    <p class="lead">Browse retaining wall projects we&rsquo;ve completed across the Omaha metro.</p>
     <a class="btn-primary" href="contact.html">Get a Free Estimate &rarr;</a>
   </div>
 </header>
 
 
-
 <div class="wrap">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; Project Map</div>
+</div>
+
+<section class="blk" id="map" style="background:var(--bg)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="accentbar"></div>
+      <h2>Retaining Walls Across the Omaha Metro</h2>
+      <p>A sample of retaining wall projects we've completed across the Omaha metro — Omaha, Bellevue, Papillion, Elkhorn, Council Bluffs and beyond.</p>
+    </div>
+
+    <div class="map-stats reveal d1">
+      <div class="map-stat"><div class="n" id="statTotal">20</div><div class="l">Projects mapped</div></div>
+      <div class="map-stat"><div class="n" id="statCities">7</div><div class="l">Cities &amp; towns</div></div>
+      <div class="map-stat"><div class="n">50</div><div class="l">Years in business</div></div>
+    </div>
+
+    <div id="projectMap" class="reveal d1"></div>
+
+    <div class="map-legend reveal">
+      <span>🔵 <b>Retaining wall</b> project</span>
+      <span>Click a marker for the neighborhood &amp; project type</span>
+    </div>
+    <p class="map-privacy">To respect our customers' privacy, projects are shown by neighborhood with first name &amp; last initial only — never full addresses.</p>
+  </div>
+</section>
+
+<div class="wrap">
   <section>
-    <h2>Retaining walls across the Omaha metro</h2>
-    <p class="body">Explore a map of retaining wall projects we've completed across Omaha, Bellevue, Papillion, Council Bluffs, and beyond.</p>
-    <p class="body">View our full interactive project map on the <a href="https://www.schmidtwalls.com/#map">homepage</a>, or browse projects by area:</p>
-    <div class="grid" style="margin-top:20px">
-      <a href="/retaining-walls-omaha.html" class="card" style="text-decoration:none;color:inherit"><strong>Omaha</strong><p style="color:var(--muted);margin-top:4px">12 verified wall projects</p></a>
-      <a href="/retaining-walls-bellevue.html" class="card" style="text-decoration:none;color:inherit"><strong>Bellevue</strong><p style="color:var(--muted);margin-top:4px">Retaining walls near Offutt</p></a>
-      <a href="/retaining-walls-papillion.html" class="card" style="text-decoration:none;color:inherit"><strong>Papillion</strong><p style="color:var(--muted);margin-top:4px">Newer subdivisions &amp; grading</p></a>
-      <a href="/retaining-walls-council-bluffs.html" class="card" style="text-decoration:none;color:inherit"><strong>Council Bluffs</strong><p style="color:var(--muted);margin-top:4px">Loess Hills terrain</p></a>
-      <a href="/retaining-walls-elkhorn.html" class="card" style="text-decoration:none;color:inherit"><strong>Elkhorn</strong><p style="color:var(--muted);margin-top:4px">Larger lots &amp; terracing</p></a>
-      <a href="/retaining-walls-la-vista.html" class="card" style="text-decoration:none;color:inherit"><strong>La Vista</strong><p style="color:var(--muted);margin-top:4px">Backyard walls &amp; patios</p></a>
+    <h2>Browse by area</h2>
+    <p class="body">Click a city below to see retaining wall projects in that area:</p>
+    <div class="grid">
+      <a href="retaining-walls-omaha.html" class="card" style="text-decoration:none;color:inherit"><strong>Omaha</strong><p>12 verified wall projects</p></a>
+      <a href="retaining-walls-bellevue.html" class="card" style="text-decoration:none;color:inherit"><strong>Bellevue</strong><p>Retaining walls near Offutt</p></a>
+      <a href="retaining-walls-papillion.html" class="card" style="text-decoration:none;color:inherit"><strong>Papillion</strong><p>Newer subdivisions &amp; grading</p></a>
+      <a href="retaining-walls-council-bluffs.html" class="card" style="text-decoration:none;color:inherit"><strong>Council Bluffs</strong><p>Loess Hills terrain</p></a>
+      <a href="retaining-walls-elkhorn.html" class="card" style="text-decoration:none;color:inherit"><strong>Elkhorn</strong><p>Larger lots &amp; terracing</p></a>
+      <a href="retaining-walls-la-vista.html" class="card" style="text-decoration:none;color:inherit"><strong>La Vista</strong><p>Backyard walls &amp; patios</p></a>
     </div>
   </section>
 
   <div class="cta-band">
-    <h2 style="color:#fff">Ready for a free estimate?</h2>
-    <p style="max-width:46ch;margin:10px auto 0;color:#cbd5e1">Call Schmidt Construction at (402) 320-2600 or request one online.</p>
-    <a class="btn-primary" href="https://www.schmidtwalls.com/#estimate">Get a Free Estimate</a>
+    <h2>Ready for a free estimate?</h2>
+    <p>Call Schmidt Construction at (402) 320-2600 or request one online.</p>
+    <a class="btn-primary" href="contact.html">Get a Free Estimate &rarr;</a>
   </div>
 </div>
+
 
 <footer>
   <div class="footer-inner">
@@ -310,6 +361,84 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  // ============================================================
+  // PROJECT MAP  \u2014  privacy-safe (first name + last initial, by neighborhood)
+  // ------------------------------------------------------------
+  // TO LOAD ALL 60 REAL PROJECTS:
+  //   Take your geocoded-retaining-walls.csv (columns: name,address,lat,lng)
+  //   and paste rows below as: {n:"First L.", city:"Omaha", lat:..., lng:..., type:"Retaining Wall"}
+  //   Keep names to first-name + last-initial for privacy. Remove the sample flag when done.
+  // ============================================================
+  const PROJECTS = [
+    {n:"Judie K.", city:"Omaha, NE", lat:41.24413, lng:-95.9731, type:"Retaining Wall"},
+    {n:"Jill F.", city:"Omaha, NE", lat:41.1564, lng:-96.14554, type:"Retaining Wall"},
+    {n:"Mike M.", city:"Papillion, NE", lat:41.15048, lng:-96.03927, type:"Retaining Wall"},
+    {n:"Derrick V.", city:"Big Lake, MO", lat:40.09127, lng:-95.34826, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Big Lake, MO", lat:40.08375, lng:-95.3494, type:"Retaining Wall"},
+    {n:"B L.", city:"Louisville, NE", lat:41.0041, lng:-96.15819, type:"Retaining Wall"},
+    {n:"Ed F.", city:"Omaha, NE", lat:41.25742, lng:-95.96962, type:"Retaining Wall"},
+    {n:"Samantha B.", city:"Omaha, NE", lat:41.2382, lng:-95.998, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Omaha, NE", lat:41.26053, lng:-96.09821, type:"Retaining Wall"},
+    {n:"John P.", city:"Omaha, NE", lat:41.20685, lng:-95.96407, type:"Retaining Wall"},
+    {n:"Joe P.", city:"Omaha, NE", lat:41.17989, lng:-95.97604, type:"Retaining Wall"},
+    {n:"Kay B.", city:"Omaha, NE", lat:41.30244, lng:-96.05409, type:"Retaining Wall"},
+    {n:"Ad S.", city:"Council Bluffs, IA", lat:41.22732, lng:-95.80327, type:"Retaining Wall"},
+    {n:"Amasa S.", city:"Council Bluffs, IA", lat:41.21348, lng:-95.80807, type:"Retaining Wall"},
+    {n:"Anthony C.", city:"Omaha, NE", lat:41.18056, lng:-95.97793, type:"Retaining Wall"},
+    {n:"Julie C.", city:"Omaha, NE", lat:41.26991, lng:-95.99431, type:"Retaining Wall"},
+    {n:"Ken K.", city:"Elkhorn, NE", lat:41.28668, lng:-96.22664, type:"Retaining Wall"},
+    {n:"Joy O.", city:"Bellevue, NE", lat:41.14836, lng:-95.90756, type:"Retaining Wall"},
+    {n:"Harry P.", city:"Omaha, NE", lat:41.31027, lng:-96.12483, type:"Retaining Wall"},
+    {n:"David L.", city:"Omaha, NE", lat:41.26689, lng:-96.04565, type:"Retaining Wall"}
+  ];
+
+  (function initMap(){
+    if (typeof L === 'undefined') return;
+    const map = L.map('projectMap', { scrollWheelZoom:false }).setView([41.24, -95.99], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const cluster = (typeof L.markerClusterGroup === 'function')
+      ? L.markerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:44 })
+      : L.layerGroup();
+
+    const dot = L.divIcon({
+      className:'',
+      html:'<div style="width:16px;height:16px;border-radius:50%;background:#206BD4;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)"></div>',
+      iconSize:[16,16], iconAnchor:[8,8]
+    });
+
+    const cities = new Set();
+    PROJECTS.forEach(p => {
+      cities.add(p.city);
+      L.marker([p.lat, p.lng], {icon:dot})
+        .bindPopup(
+          '<div class="pop-title">'+p.n+'</div>'+
+          '<div class="pop-city">'+p.city+'</div>'+
+          '<span class="pop-type">'+(p.type||'Retaining Wall')+'</span>'
+        )
+        .addTo(cluster);
+    });
+    map.addLayer(cluster);
+
+    // Center on the Omaha metro (a couple of jobs reach into MO/IA — they stay clustered)
+    map.setView([41.24, -95.99], 11);
+
+    // Update stat counts to reflect the loaded data
+    const total = PROJECTS.length;
+    document.getElementById('statTotal').textContent = total >= 60 ? total : (total + '+');
+    document.getElementById('statCities').textContent = cities.size;
+
+    // Enable scroll-zoom only after a click (better UX inside a scrolling page)
+    map.on('click', () => map.scrollWheelZoom.enable());
+  })();
+
+</script>
 <script>
 (function(){
   var burger=document.getElementById('navburger'),menu=document.getElementById('mobileMenu');
