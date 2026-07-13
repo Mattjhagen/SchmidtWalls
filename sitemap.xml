@@ -1,37 +1,223 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage -->
   <url>
     <loc>https://www.schmidtwalls.com/</loc>
     <lastmod>2026-07-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.schmidtwalls.com/images/timber-retaining-wall-hero.jpg</image:loc>
       <image:title>Timber retaining wall by Schmidt Construction in Omaha</image:title>
     </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/block-retaining-wall-steps.jpg</image:loc>
+      <image:title>Block retaining wall with integrated steps</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/concrete-driveway-omaha.jpg</image:loc>
+      <image:title>Concrete driveway installation Omaha Nebraska</image:title>
+    </image:image>
   </url>
+
   <!-- Service pages -->
-  <url><loc>https://www.schmidtwalls.com/retaining-walls.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.schmidtwalls.com/concrete.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.schmidtwalls.com/seawalls.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.schmidtwalls.com/landscapes-hardscapes.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.schmidtwalls.com/remodeling.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/block-wall-siena-tiered.jpg</image:loc>
+      <image:title>Tiered block retaining wall Omaha NE</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/timber-terraced-wide.jpg</image:loc>
+      <image:title>Timber terraced retaining wall</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/boulder-wall-terraced.jpg</image:loc>
+      <image:title>Boulder retaining wall terraced landscaping</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/concrete.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/concrete-driveway-omaha.jpg</image:loc>
+      <image:title>Concrete driveway contractor Omaha Nebraska</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/stamped-concrete-patio-steps.jpg</image:loc>
+      <image:title>Stamped concrete patio with steps</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/concrete-patio-garden.jpg</image:loc>
+      <image:title>Concrete patio and garden hardscape</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/seawalls.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/lakefront-seawall-omaha.jpg</image:loc>
+      <image:title>Lakefront seawall construction Omaha area</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/seawall-dock-detail.jpg</image:loc>
+      <image:title>Seawall and dock detail</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/landscapes-hardscapes.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/paver-patio-dining.jpg</image:loc>
+      <image:title>Paver patio outdoor dining area Omaha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/paver-walkway-landscaped.jpg</image:loc>
+      <image:title>Paver walkway with professional landscaping</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/remodeling.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/kitchen-remodel-cabinets.jpg</image:loc>
+      <image:title>Kitchen remodel custom cabinets Omaha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/kitchen-remodel-counters.jpg</image:loc>
+      <image:title>Kitchen remodel countertops and backsplash</image:title>
+    </image:image>
+  </url>
+
   <!-- Content pages -->
-  <url><loc>https://www.schmidtwalls.com/gallery.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/reviews.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/project-map.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/why-us.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/faq.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/contact.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url>
+    <loc>https://www.schmidtwalls.com/gallery.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/block-wall-8in-sienna.jpg</image:loc>
+      <image:title>Block retaining wall Sienna color</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/timber-wall-steps-patio.jpg</image:loc>
+      <image:title>Timber wall with steps and patio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/stamped-patio-garden-wall.jpg</image:loc>
+      <image:title>Stamped patio with garden retaining wall</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/reviews.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/project-map.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/why-us.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/faq.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/contact.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- City landing pages -->
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-bellevue.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-papillion.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-council-bluffs.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-elkhorn.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/retaining-walls-la-vista.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/concrete-omaha.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/concrete-papillion.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.schmidtwalls.com/seawalls-council-bluffs.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-omaha.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/retaining-wall-driveway.jpg</image:loc>
+      <image:title>Retaining wall along driveway Omaha NE</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-bellevue.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-papillion.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-council-bluffs.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-elkhorn.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/retaining-walls-la-vista.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/concrete-omaha.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/concrete-craftsmanship.jpg</image:loc>
+      <image:title>Concrete craftsmanship Omaha contractor</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/concrete-papillion.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.schmidtwalls.com/seawalls-council-bluffs.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://www.schmidtwalls.com/images/lakefront-seawall-omaha.jpg</image:loc>
+      <image:title>Seawall construction Council Bluffs Iowa</image:title>
+    </image:image>
+  </url>
+
 </urlset>
