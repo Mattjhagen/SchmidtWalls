@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Shell from "@/components/shared/Shell";
 import { createClient } from "@/lib/supabase/server";
 import InviteForm from "./InviteForm";
@@ -9,6 +10,7 @@ const nav = [
   { href: "/estimates", label: "Estimates" },
   { href: "/customers", label: "Customers" },
   { href: "/admin", label: "👤 Manage Users" },
+  { href: "/admin/timesheets", label: "📋 Timesheets" },
 ];
 
 export default async function AdminPage() {
@@ -17,7 +19,7 @@ export default async function AdminPage() {
   // Get all profiles (admin can see all via RLS policy)
   const { data: users } = await supabase
     .from("profiles")
-    .select("id, email, full_name, role, created_at")
+    .select("id, email, full_name, role, pay_rate, created_at")
     .order("created_at", { ascending: false });
 
   return (
@@ -25,6 +27,7 @@ export default async function AdminPage() {
       <p style={{ color: "#64748b", fontSize: 14, marginBottom: 24 }}>
         Invite employees or customers. Employees get full portal access (time clock, estimates, customers).
         Customers only see their own estimates and invoices.
+        {" "}<Link href="/admin/timesheets" style={{ color: "#206BD4", fontWeight: 600 }}>View Timesheets →</Link>
       </p>
 
       <InviteForm />

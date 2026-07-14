@@ -6,11 +6,14 @@ interface User {
   email: string;
   full_name: string | null;
   role: string;
+  pay_rate: number | null;
   created_at: string;
 }
 
 export default function UserTable({ users }: { users: User[] }) {
   const [updating, setUpdating] = useState<string | null>(null);
+  const [editingPay, setEditingPay] = useState<string | null>(null);
+  const [payValue, setPayValue] = useState("");
 
   async function changeRole(userId: string, newRole: string) {
     setUpdating(userId);
@@ -25,6 +28,20 @@ export default function UserTable({ users }: { users: User[] }) {
       alert("Failed to update role");
     }
     setUpdating(null);
+  }
+
+  async function savePayRate(userId: string) {
+    const res = await fetch("/api/admin/set-pay-rate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, payRate: Number(payValue) }),
+    });
+    if (res.ok) {
+      window.location.reload();
+    } else {
+      alert("Failed to update pay rate");
+    }
+    setEditingPay(null);
   }
 
   const roleBadge = (role: string) => {
@@ -53,6 +70,7 @@ export default function UserTable({ users }: { users: User[] }) {
             <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Name</th>
             <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Email</th>
             <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Role</th>
+            <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Pay Rate</th>
             <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Joined</th>
             <th style={{ textAlign: "left", padding: "10px 12px", fontSize: 12, color: "#64748b", fontWeight: 700 }}>Actions</th>
           </tr>
@@ -68,6 +86,51 @@ export default function UserTable({ users }: { users: User[] }) {
               </td>
               <td style={{ padding: "10px 12px" }}>
                 {roleBadge(u.role)}
+              </td>
+              <td style={{ padding: "10px 12px" }}>
+                {editingPay === u.id ? (
+                  <span style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                    <input
+                      type="number"
+                      step="0.50"
+                      value={payValue}
+                      onChange={(e) => setPayValue(e.target.value)}
+                      className="input"
+                      style={{ width: 80, fontSize: 13, padding: "3px 6px" }}
+                      placeholder="$/hr"
+                      autoFocus
+                    />
+                    <button
+                      onClick={() => savePayRate(u.id)}
+                      style={{ background: "#166534", color: "#fff", border: "none", padding: "4px 8px", borderRadius: 4, fontSize: 11, cursor: "pointer" }}
+                    >
+                      ✓
+                    </button>
+                    <button
+                      onClick={() => setEditingPay(null)}
+                      style={{ background: "#e2e8f0", border: "none", padding: "4px 8px", borderRadius: 4, fontSize: 11, cursor: "pointer" }}
+                    >
+                      ✗
+                    </button>
+                  </span>
+                ) : (
+                  <span
+                    onClick={() => {
+                      if (u.role !== "customer") {
+                        setEditingPay(u.id);
+                        setPayValue(String(u.pay_rate || ""));
+                      }
+                    }}
+                    style={{
+                      cursor: u.role !== "customer" ? "pointer" : "default",
+                      color: u.pay_rate ? "#166534" : "#94a3b8",
+                      fontWeight: u.pay_rate ? 700 : 400,
+                    }}
+                    title={u.role !== "customer" ? "Click to edit" : ""}
+                  >
+                    {u.role === "customer" ? "—" : (u.pay_rate ? `$${Number(u.pay_rate).toFixed(2)}/hr` : "Click to set")}
+                  </span>
+                )}
               </td>
               <td style={{ padding: "10px 12px", color: "#64748b", fontSize: 13 }}>
                 {new Date(u.created_at).toLocaleDateString()}
