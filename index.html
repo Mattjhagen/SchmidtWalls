@@ -346,12 +346,12 @@
   .after-clip .ba-img-before{width:var(--ba-w,900px);max-width:none}
   @media(max-width:760px){.brand-logo{height:28px}}
 
-  .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px}
+  .process-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:20px;max-width:900px;margin-left:auto;margin-right:auto}
   .process-card{text-align:center}
-  .process-card img{max-height:320px;object-fit:cover;width:100%;border-radius:14px;aspect-ratio:4/3}
+  .process-card img{width:100%;height:260px;object-fit:cover;border-radius:14px;display:block}
   .process-card h3{font-size:1.2rem;font-weight:800;margin:16px 0 8px;color:var(--ink)}
   .process-card p{color:var(--muted);font-size:.95rem;max-width:36ch;margin:0 auto}
-  @media(max-width:640px){.process-grid{grid-template-columns:1fr}}
+  @media(max-width:640px){.process-grid{grid-template-columns:1fr}.process-card img{height:200px}}
 </style>
 </head>
 <body>
@@ -520,12 +520,12 @@
     </div>
     <div class="process-grid reveal d1">
       <div class="process-card">
-        <img src="images/wall-drainage-process.jpg" alt="Proper drainage installation behind retaining wall" style="width:100%;border-radius:14px;aspect-ratio:4/3;object-fit:cover;">
+        <img src="images/wall-drainage-process.jpg" alt="Proper drainage installation behind retaining wall">
         <h3>Proper Drainage</h3>
         <p>Perforated pipe wrapped in filter fabric, backed by clean gravel. This is what keeps a wall standing for decades.</p>
       </div>
       <div class="process-card">
-        <img src="images/wall-finished-siena.jpg" alt="Finished block retaining wall with steps" style="width:100%;border-radius:14px;aspect-ratio:4/3;object-fit:cover;">
+        <img src="images/wall-finished-siena.jpg" alt="Finished block retaining wall with steps">
         <h3>The Finished Wall</h3>
         <p>Engineered block construction with cap stones and integrated steps. Built to last — guaranteed.</p>
       </div>
