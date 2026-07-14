@@ -6,6 +6,7 @@ import { money } from "@/lib/utils";
 const nav = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/timeclock", label: "Time Clock" },
+  { href: "/jobs", label: "Jobs" },
   { href: "/estimates", label: "Estimates" },
   { href: "/customers", label: "Customers" },
 ];

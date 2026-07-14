@@ -1,4 +1,5 @@
 import Shell from "@/components/shared/Shell";
+import WeatherWidget from "@/components/shared/WeatherWidget";
 import { createClient } from "@/lib/supabase/server";
 
 function money(n: number) {
@@ -21,6 +22,7 @@ export default async function Dashboard() {
   const nav = [
     { href: "/dashboard", label: "Dashboard" },
     { href: "/timeclock", label: "Time Clock" },
+    { href: "/jobs", label: "Jobs" },
     { href: "/estimates", label: "Estimates" },
     { href: "/customers", label: "Customers" },
     ...(isAdmin ? [{ href: "/admin", label: "👤 Manage Users" }] : []),
@@ -43,6 +45,12 @@ export default async function Dashboard() {
 
   return (
     <Shell nav={nav} title="Dashboard">
+      {/* Weather Widget */}
+      <div style={{ marginBottom: 20 }}>
+        <WeatherWidget />
+      </div>
+
+      {/* Stats Cards */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(200px,1fr))", gap: 16 }}>
         {cards.map(c => (
           <div key={c.label} className="card">
@@ -52,7 +60,7 @@ export default async function Dashboard() {
         ))}
       </div>
       <p style={{ color: "#64748b", marginTop: 24, fontSize: 14 }}>
-        Welcome back. Use <b>Time Clock</b> to punch in against a job, or <b>Estimates → New</b> to build a proposal and email it to a customer.
+        Welcome back. Use <b>Time Clock</b> to punch in against a job, <b>Jobs</b> to track project status, or <b>Estimates → New</b> to build a proposal and email it to a customer.
         {isAdmin && (
           <> Head to <b><a href="/admin" style={{ color: "#206BD4" }}>Manage Users</a></b> to invite employees or customers.</>
         )}

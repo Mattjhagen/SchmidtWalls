@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CustomerShell from "@/components/shared/CustomerShell";
 import { createClient } from "@/lib/supabase/server";
 
@@ -44,7 +45,7 @@ export default async function CustomerPortal() {
       ) : (
         <>
           <p style={{ color: "#64748b", fontSize: 14, marginBottom: 20 }}>
-            Here are your estimates from Schmidt Construction. Click one to review details.
+            Here are your estimates from Schmidt Construction. Click one to review details and take action.
           </p>
 
           {(!estimates || estimates.length === 0) ? (
@@ -56,31 +57,39 @@ export default async function CustomerPortal() {
               {estimates.map((est: any) => {
                 const s = statusColors[est.status] || statusColors.draft;
                 return (
-                  <div key={est.id} className="card" style={{
-                    display: "flex", justifyContent: "space-between", alignItems: "center",
-                    padding: "18px 22px", cursor: "pointer",
-                  }}>
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: 15 }}>
-                        {est.estimate_number}
+                  <Link
+                    key={est.id}
+                    href={`/portal/estimate/${est.id}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    <div className="card" style={{
+                      display: "flex", justifyContent: "space-between", alignItems: "center",
+                      padding: "18px 22px", cursor: "pointer",
+                      transition: "box-shadow 0.15s, border-color 0.15s",
+                    }}>
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 15 }}>
+                          {est.estimate_number}
+                        </div>
+                        <div style={{ fontSize: 13, color: "#64748b", marginTop: 2 }}>
+                          {est.job?.name || "Project"} • {new Date(est.created_at).toLocaleDateString()}
+                        </div>
                       </div>
-                      <div style={{ fontSize: 13, color: "#64748b", marginTop: 2 }}>
-                        {est.job?.name || "Project"} • {new Date(est.created_at).toLocaleDateString()}
+                      <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                        <span style={{ fontWeight: 800, fontSize: 16 }}>
+                          ${Number(est.total).toLocaleString()}
+                        </span>
+                        <span style={{
+                          background: s.bg, color: s.text,
+                          padding: "4px 10px", borderRadius: 6,
+                          fontSize: 12, fontWeight: 700,
+                        }}>
+                          {s.label}
+                        </span>
+                        <span style={{ color: "#94a3b8", fontSize: 18 }}>→</span>
                       </div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                      <span style={{ fontWeight: 800, fontSize: 16 }}>
-                        ${Number(est.total).toLocaleString()}
-                      </span>
-                      <span style={{
-                        background: s.bg, color: s.text,
-                        padding: "4px 10px", borderRadius: 6,
-                        fontSize: 12, fontWeight: 700,
-                      }}>
-                        {s.label}
-                      </span>
-                    </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
