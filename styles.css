@@ -1,0 +1,171 @@
+/* ============================================================
+   Schmidt Construction — shared site-wide stylesheet
+   Design tokens, header/nav, footer, buttons, and the section
+   patterns used across two or more pages. Page-specific layout
+   (hero sizing, unique sections) stays in each page's own
+   <style> block.
+   ============================================================ */
+
+:root{
+  --primary:#0f172a; --primary-2:#1e293b;
+  --accent:#206BD4; --accent-hover:#17569f; --accent-light:#4f94f2;
+  --ink:#0f172a; --muted:#64748b; --line:#E5E7EB; --bg:#f8fafc;
+  --blue:#206BD4;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1152px;margin:0 auto;padding:0 24px}
+.eyebrow{color:var(--accent-light);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+
+/* ============================================================
+   NAV — white, sticky, premium
+   ============================================================ */
+nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px;max-width:1560px}
+.brand{display:inline-flex;align-items:center;text-decoration:none;flex:none}
+.brand-logo{height:42px;width:auto;display:block}
+.navlinks{display:flex;gap:2px;align-items:center;flex-wrap:nowrap}
+.navlinks>a,.navitem>button{color:var(--accent);text-decoration:none;font-size:.86rem;font-weight:600;transition:color .2s,background .2s;background:none;border:none;cursor:pointer;font-family:inherit;padding:8px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.navlinks>a:hover,.navitem>button:hover{color:var(--accent-hover);background:#EEF4FE}
+.navlinks>a.active,.navitem.active>button{box-shadow:inset 0 -2px 0 var(--accent)}
+.navitem{position:relative}
+.navitem>button .caret{width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-1px);transition:transform .25s}
+.navitem:hover>button .caret,.navitem:focus-within>button .caret{transform:rotate(225deg) translateY(2px)}
+/* dropdown panel */
+.dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:230px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -20px rgba(15,23,42,.22);padding:8px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:60}
+.navitem:hover .dropdown,.navitem:focus-within .dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+/* bridge so hover doesn't drop between button and panel */
+.navitem::after{content:'';position:absolute;top:100%;left:0;right:0;height:12px}
+.dropdown a{display:flex;flex-direction:column;gap:1px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--ink);transition:background .15s}
+.dropdown a:hover{background:#F5F8FF;text-decoration:none}
+.dropdown a .d-title{font-size:.9rem;font-weight:700;color:var(--ink)}
+.dropdown a .d-sub{font-size:.78rem;color:var(--muted)}
+.navcta{background:var(--accent);color:#fff;padding:10px 18px;border-radius:9px;font-weight:700;font-size:.88rem;text-decoration:none;transition:background .2s,transform .2s;white-space:nowrap;flex:none}
+.navcta:hover{background:var(--accent-hover);transform:translateY(-1px);text-decoration:none}
+.navphone{color:var(--ink);text-decoration:none;font-weight:700;font-size:.9rem;letter-spacing:.01em;transition:color .2s;white-space:nowrap;flex:none}
+.navphone:hover{color:var(--accent);text-decoration:none}
+/* Portal Login — plain text link, not a CTA */
+.navportal{color:var(--muted) !important;font-weight:500 !important;font-size:.8rem}
+.navportal:hover{color:var(--accent) !important;text-decoration:none}
+/* mobile hamburger */
+.navburger{display:none;background:none;border:none;color:var(--ink);cursor:pointer;flex-direction:column;gap:5px;padding:8px;flex:none}
+.navburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:84px 0 0;background:#fff;z-index:49;padding:24px;overflow-y:auto}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:var(--ink);text-decoration:none;font-size:1.05rem;font-weight:600;padding:14px 8px;border-bottom:1px solid var(--line)}
+.mobile-menu .m-group{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:18px 8px 4px}
+/* With 9 flat nav items, collapse to the mobile menu earlier so links never look crowded */
+@media(max-width:1700px){.navphone{display:none}}
+@media(max-width:1700px){.navlinks{display:none}.navburger{display:flex}}
+@media(max-width:760px){.brand-logo{height:34px}}
+
+/* ============================================================
+   HERO — shell mechanics shared; sizing lives per-page
+   ============================================================ */
+.hero{position:relative;display:flex;align-items:center;overflow:hidden;background:#0b1220}
+.hero-photo{position:absolute;inset:0;z-index:1;background-size:cover;background-position:center 30%}
+/* Soft gradient so text stays legible without heavily darkening the photo */
+.hero::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:
+    linear-gradient(100deg, rgba(11,18,32,.55) 0%, rgba(11,18,32,.26) 42%, rgba(11,18,32,0) 68%),
+    linear-gradient(180deg, rgba(11,18,32,.30) 0%, rgba(11,18,32,0) 45%);
+}
+.hero-inner{position:relative;z-index:3}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.trust{margin-top:44px;display:flex;gap:30px;flex-wrap:wrap;color:#aeb9c6;font-size:.92rem}
+.trust b{color:#fff}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary{background:var(--accent);color:#fff;padding:15px 30px;border-radius:11px;font-weight:700;text-decoration:none;font-size:1.02rem;box-shadow:0 10px 24px -8px rgba(32,107,212,.45);transition:transform .2s,box-shadow .2s,background .2s;display:inline-block;border:none;cursor:pointer;font-family:inherit}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(32,107,212,.5);text-decoration:none}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.65);color:#fff;padding:15px 30px;border-radius:11px;font-weight:700;text-decoration:none;font-size:1.02rem;transition:background .2s,color .2s}
+.btn-ghost:hover{background:#fff;color:var(--ink);text-decoration:none}
+
+/* ============================================================
+   GENERIC CONTENT-PAGE SECTIONS (contact/faq/gallery/reviews/
+   why-us/retaining-walls* pages)
+   ============================================================ */
+section{padding:64px 0}
+section h2{font-size:clamp(1.6rem,3vw,2rem);font-weight:800;margin-bottom:16px;color:var(--ink)}
+section p{color:#334155;font-size:1.05rem;line-height:1.7;margin-bottom:16px;max-width:72ch}
+section p:last-child{margin-bottom:0}
+p.body{color:#334155;margin-bottom:16px;font-size:1.05rem;line-height:1.7;max-width:72ch}
+
+.crumbs{font-size:.85rem;color:var(--muted);padding:18px 0 0;margin-bottom:-12px}
+.crumbs a{color:var(--blue);text-decoration:none}
+.crumbs a:hover{text-decoration:underline}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;transition:box-shadow .2s,transform .2s}
+.svc:hover{box-shadow:0 10px 26px -14px rgba(15,23,42,.16);transform:translateY(-2px)}
+.svc h3{font-size:1.08rem;font-weight:700;margin-bottom:8px;color:var(--ink)}
+.svc p{font-size:.92rem;color:var(--muted);line-height:1.6;margin-bottom:0}
+
+.cta-band{background:var(--primary);color:#fff;text-align:center;padding:64px 24px;border-radius:18px;margin:48px 0}
+.cta-band h2{color:#fff;margin-bottom:12px}
+.cta-band p{max-width:48ch;margin:0 auto;color:#cbd5e1;font-size:1.05rem}
+.cta-band .btn-primary{display:inline-block;margin-top:22px}
+
+.areas{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.areas a{background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 14px;text-decoration:none;color:var(--ink);font-size:.88rem;font-weight:600;transition:border-color .2s,color .2s}
+.areas a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 10px 24px -10px rgba(15,23,42,.14);transform:translateY(-2px)}
+.card strong{font-size:1rem;color:var(--ink)}
+.card p{font-size:.88rem;color:var(--muted);margin:0}
+
+/* ============================================================
+   SECTION BLOCKS + REVEAL — shared by index.html and project-map.html
+   ============================================================ */
+section.blk{padding:112px 0}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 60px}
+.sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.sec-head p{color:var(--muted);font-size:1.08rem}
+.accentbar{width:56px;height:4px;background:var(--accent);border-radius:99px;margin:0 auto 22px}
+
+.reveal{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.js-reveal .reveal:not(.in){opacity:0;transform:translateY(24px)}
+.js-reveal .reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+/* PROJECT MAP */
+.map-stats{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
+.map-stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 24px;text-align:center;min-width:120px}
+.map-stat .n{font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1}
+.map-stat .l{font-size:.8rem;color:var(--muted);font-weight:600;margin-top:6px}
+#projectMap{height:520px;border-radius:20px;overflow:hidden;box-shadow:0 14px 34px -18px rgba(15,23,42,.28);border:1px solid var(--line);z-index:1}
+@media(max-width:640px){#projectMap{height:420px}}
+.map-legend{display:flex;gap:22px;flex-wrap:wrap;justify-content:center;margin-top:22px;color:var(--muted);font-size:.9rem}
+.map-legend b{color:var(--ink)}
+.map-privacy{font-size:.82rem;color:var(--muted);text-align:center;margin-top:14px;max-width:60ch;margin-left:auto;margin-right:auto}
+.leaflet-popup-content{font-family:var(--sans)}
+.pop-title{font-weight:800;font-size:.98rem;margin-bottom:2px}
+.pop-city{color:#64748b;font-size:.86rem}
+.pop-type{display:inline-block;margin-top:6px;background:#EAF2FE;color:var(--accent-hover);border:1px solid #BFDBFE;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:#0b1220;color:#94a3b8;padding:48px 24px;font-size:.85rem}
+.footer-inner{max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.footer-cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
+@media(max-width:760px){.footer-cols{grid-template-columns:1fr}}
+.footer-brand{color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:8px}
+.footer-brand span{color:var(--accent-light)}
+.footer-desc{color:#64748b;line-height:1.7}
+.footer-col h4{color:#e2e8f0;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+.footer-col a{display:block;color:#64748b;text-decoration:none;margin-bottom:8px;transition:color .2s}
+.footer-col a:hover{color:#e2e8f0;text-decoration:none}
+.footer-bottom{border-top:1px solid #1e293b;padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#475569;font-size:.8rem}
+.footer-bottom a{color:#64748b;text-decoration:none}
+.footer-bottom a:hover{color:#e2e8f0}
+.footer-logo{height:48px;width:auto;margin-bottom:14px}

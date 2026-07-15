@@ -1,7 +1,7 @@
 # Schmidt Construction — Website
 
 Static single-page marketing site for **Schmidt Construction**, a family-owned Omaha
-contractor specializing in retaining walls, concrete, seawalls, and hardscaping (est. 1976).
+contractor specializing in retaining walls, concrete, seawalls, and hardscaping (est. 1973).
 
 ## Contents
 - `index.html` — the entire site (HTML + CSS + JS in one file)
