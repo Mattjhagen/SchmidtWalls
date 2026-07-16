@@ -148,6 +148,7 @@ section.blk{padding:112px 0}
 .map-legend b{color:var(--ink)}
 .map-privacy{font-size:.82rem;color:var(--muted);text-align:center;margin-top:14px;max-width:60ch;margin-left:auto;margin-right:auto}
 .leaflet-popup-content{font-family:var(--sans)}
+.pop-photo{width:100%;max-width:220px;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px;display:block}
 .pop-title{font-weight:800;font-size:.98rem;margin-bottom:2px}
 .pop-city{color:#64748b;font-size:.86rem}
 .pop-type{display:inline-block;margin-top:6px;background:#EAF2FE;color:var(--accent-hover);border:1px solid #BFDBFE;border-radius:6px;padding:2px 8px;font-size:.72rem;font-weight:700}

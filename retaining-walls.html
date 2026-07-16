@@ -42,6 +42,13 @@
   .hero h1{color:#fff;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin-bottom:18px;text-shadow:0 3px 16px rgba(0,0,0,.7)}
   .hero p.lead{color:#fff;font-size:1.15rem;max-width:46ch;margin-bottom:28px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
   .hero .btn-primary{padding:14px 28px;font-size:1rem}
+  .svc ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:.88rem;line-height:1.7}
+  .price-card .price{display:block;margin-top:10px;font-size:1.3rem;font-weight:800;color:var(--accent)}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:24px}
+  .step .num{width:36px;height:36px;border-radius:99px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px;font-size:.95rem}
+  .step h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;color:var(--ink)}
+  .step p{font-size:.9rem;color:var(--muted)}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
   @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0}}
 </style>
 </head>
@@ -104,13 +111,47 @@
 
   <section>
     <h2>Omaha&apos;s trusted retaining walls contractor</h2>
-    <p class="body">Schmidt Construction has built retaining walls across the Omaha metro for over 50 years. Every wall starts with proper site evaluation, engineered drainage, and a compacted base — because a retaining wall is only as good as what's behind it. That's why our walls hold their line through Nebraska's brutal freeze-thaw cycles when cheaper builds bulge, crack, and fail.</p>
+    <p class="body">A well-built retaining wall protects your property, prevents erosion, expands usable yard space, and adds long-term structural value. Schmidt Construction has built retaining walls across the Omaha metro for over 50 years, engineered to withstand the region's clay soils, freeze/thaw cycles, and steep grade changes.</p>
     <p class="body"><strong>Free, no-obligation on-site estimates</strong> — call <a href="tel:+14023202600">(402) 320-2600</a> or <a href="https://www.schmidtwalls.com/#estimate">request one online</a>.</p>
   </section>
 
   <section>
-    <h2>What we offer</h2>
-    <div class="services"><div class="svc"><h3>Block Retaining Walls</h3><p>Engineered segmental block walls — the most popular choice for residential and commercial projects. Proper geogrid reinforcement on taller walls.</p></div><div class="svc" id="timber"><h3>Timber Retaining Walls</h3><p>Natural pressure-treated timber walls ideal for landscaped and garden settings. Cost-effective for shorter walls up to 4 feet.</p></div><div class="svc" id="commercial"><h3>Commercial & Structural Walls</h3><p>Large-scale retaining walls for commercial lots, road cuts, and parking structures. Engineered to spec.</p></div><div class="svc"><h3>Terraced & Garden Walls</h3><p>Multi-tier walls that turn steep, unusable grades into beautiful, level planting beds and usable yard space.</p></div><div class="svc"><h3>Drainage Systems</h3><p>Every wall we build includes proper French drains, weep holes, and gravel backfill to prevent hydrostatic pressure failure.</p></div></div>
+    <h2>Types of retaining walls we install</h2>
+    <div class="services">
+      <div class="svc"><h3>Stone Retaining Walls</h3><p>Natural, beautiful, and extremely durable — ideal for premium landscapes.</p></div>
+      <div class="svc" id="timber"><h3>Timber Retaining Walls</h3><p>A warm, natural look and a cost-effective solution for many Omaha homeowners.</p></div>
+      <div class="svc"><h3>Concrete Block Retaining Walls</h3><p>Strong, modern, and ideal for structural or multi-tiered retaining wall systems.</p></div>
+      <div class="svc" id="commercial"><h3>Commercial Retaining Walls</h3><p>Large-scale engineered walls for parking lots, developments, HOAs, and commercial properties.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Why Omaha homeowners choose Schmidt Construction</h2>
+    <div class="services">
+      <div class="svc"><h3>Local Expertise With Omaha Terrain and Soil</h3><p>Omaha has challenging clay soils, hillside neighborhoods, and erosion-prone slopes. Our walls are engineered specifically for these Midwest conditions.</p></div>
+      <div class="svc">
+        <h3>Built for Strength, Drainage &amp; Long-Term Performance</h3>
+        <p>A retaining wall is only as good as the foundation and drainage behind it. Every wall we build includes:</p>
+        <ul>
+          <li>Compacted gravel base</li>
+          <li>Proper trench depth</li>
+          <li>Drain tile and gravel backfill</li>
+          <li>Geogrid reinforcement (if needed)</li>
+          <li>Laser-level precision</li>
+          <li>Soil pressure engineering</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Retaining wall installation cost in Omaha, NE</h2>
+    <p class="body">Costs vary based on size, height, materials, and site conditions. We provide honest, transparent estimates — no surprises.</p>
+    <div class="services">
+      <div class="svc price-card"><h3>Concrete Retaining Walls</h3><span class="price">$40–$60 / sq. ft.</span></div>
+      <div class="svc price-card"><h3>Lakeside Sea Walls</h3><span class="price">$100–$300 / sq. ft.</span></div>
+      <div class="svc price-card"><h3>Timber Retaining Walls</h3><span class="price">$40–$60 / sq. ft.</span></div>
+    </div>
   </section>
 
   <div class="cta-band">
@@ -118,6 +159,18 @@
     <p>Call Schmidt Construction for a free estimate on your retaining walls project. Serving the entire Omaha metro.</p>
     <a class="btn-primary" href="tel:+14023202600">Call (402) 320-2600</a>
   </div>
+
+  <section>
+    <h2>Our Omaha retaining wall installation process</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>On-Site Assessment</h3><p>We evaluate slope, drainage, soil structure, elevations, and access.</p></div>
+      <div class="step"><div class="num">2</div><h3>Wall Design &amp; Material Selection</h3><p>We tailor your wall to match the function, height, landscape, and aesthetic.</p></div>
+      <div class="step"><div class="num">3</div><h3>Excavation &amp; Foundation Prep</h3><p>We excavate to the correct depth and install a compressed aggregate base for stability.</p></div>
+      <div class="step"><div class="num">4</div><h3>Wall Construction &amp; Reinforcement</h3><p>Our walls are built using strict engineering principles that prevent shifting and leaning.</p></div>
+      <div class="step"><div class="num">5</div><h3>Drainage System Installation</h3><p>Proper drainage prevents hydrostatic pressure — the #1 cause of wall failure.</p></div>
+      <div class="step"><div class="num">6</div><h3>Cleanup &amp; Final Inspection</h3><p>Your property is left clean, safe, and ready to enjoy.</p></div>
+    </div>
+  </section>
 
   <section>
     <h2>Areas we serve</h2>
@@ -129,12 +182,16 @@
       <a href="/retaining-walls-council-bluffs.html">Council Bluffs</a>
       <a href="/retaining-walls-elkhorn.html">Elkhorn</a>
       <a href="/retaining-walls-la-vista.html">La Vista</a>
+      <a href="/service-areas.html">Ralston</a>
+      <a href="/service-areas.html">Gretna</a>
+      <a href="/service-areas.html">Bennington</a>
+      <a href="/service-areas.html">Springfield</a>
     </div>
   </section>
 
   <section>
     <h2>Why choose Schmidt Construction</h2>
-    <p class="body">Licensed &amp; insured, family-owned since 1973. Honest pricing, clean job sites, and work that lasts. See our <a href="https://www.schmidtwalls.com/#gallery">project gallery</a>, <a href="https://www.schmidtwalls.com/#reviews">customer reviews</a>, and <a href="https://www.schmidtwalls.com/#faq">FAQ</a>.</p>
+    <p class="body">Licensed &amp; insured, family-owned since 1973. Honest pricing, clean job sites, and work that lasts. See our <a href="gallery.html">project gallery</a>, <a href="reviews.html">customer reviews</a>, and <a href="faq.html">FAQ</a>.</p>
   </section>
 </div>
 
@@ -151,6 +208,7 @@
         <a href="concrete.html">Concrete Contractor</a>
         <a href="remodeling.html">Kitchen Remodeling</a>
         <a href="gallery.html">Portfolio</a>
+        <a href="project-map.html">Project Map</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
