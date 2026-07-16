@@ -251,14 +251,26 @@
       iconSize:[16,16], iconAnchor:[8,8]
     });
 
+    // Representative photo per project type (not tied to any specific address —
+    // pin locations are neighborhood-level approximations, so a photo here
+    // illustrates the kind of work done rather than that exact property).
+    const TYPE_PHOTOS = {
+      'Retaining Wall': 'images/block-wall-siena-tiered.jpg',
+      'Concrete': 'images/stamped-concrete-patio-steps.jpg',
+      'Kitchen Remodel': 'images/kitchen-remodel-counters.jpg'
+    };
+
     const cities = new Set();
     PROJECTS.forEach(p => {
       cities.add(p.city);
+      const type = p.type || 'Retaining Wall';
+      const photo = TYPE_PHOTOS[type];
       L.marker([p.lat, p.lng], {icon:dot})
         .bindPopup(
+          (photo ? '<img src="'+photo+'" alt="'+type+' example" class="pop-photo">' : '') +
           '<div class="pop-title">'+p.n+'</div>'+
           '<div class="pop-city">'+p.city+'</div>'+
-          '<span class="pop-type">'+(p.type||'Retaining Wall')+'</span>'
+          '<span class="pop-type">'+type+'</span>'
         )
         .addTo(cluster);
     });
