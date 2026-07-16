@@ -25,6 +25,15 @@ a:hover{text-decoration:underline}
 /* ============================================================
    NAV — white, sticky, premium
    ============================================================ */
+.topbar{background:#0f172a;color:#94a3b8;font-size:.82rem;border-bottom:1px solid #1e293b}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:36px;max-width:1560px;gap:12px}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar a{color:#94a3b8;text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;gap:5px}
+.topbar a:hover{color:#fff}
+.topbar-right{display:flex;align-items:center;gap:14px}
+.topbar-right a{color:#94a3b8;display:inline-flex;align-items:center;transition:color .2s}
+.topbar-right a:hover{color:#fff}
+@media(max-width:640px){.topbar-left .tb-email{display:none}}
 nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:18px;max-width:1560px}
 .brand{display:inline-flex;align-items:center;text-decoration:none;flex:none}
