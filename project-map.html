@@ -35,11 +35,11 @@
 <style>
   /* HERO — page-specific sizing (shell mechanics are in styles.css) */
   .hero{min-height:52vh}
-  .hero-inner{padding:80px 0}
-  .hero h1{color:#fff;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin-bottom:18px;text-shadow:0 3px 16px rgba(0,0,0,.7)}
-  .hero p.lead{color:#fff;font-size:1.15rem;max-width:46ch;margin-bottom:28px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .hero-inner{padding:80px 0; display: flex; flex-direction: column; align-items: center; text-align: center;}
+  .hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin-bottom:18px;}
+  .hero p.lead{font-size:1.15rem;max-width:46ch;margin-bottom:28px;}
   .hero .btn-primary{padding:14px 28px;font-size:1rem}
-  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0}}
+  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0;}}
 </style>
 </head>
 <body>
@@ -86,22 +86,13 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-photo" style="background-image:url('images/retaining-wall-driveway.jpg')"></div>
-  <div class="wrap hero-inner">
-    <p class="eyebrow">Omaha, NE &middot; Est. 1973</p>
-    <h1>Project Map</h1>
-    <p class="lead">Browse the retaining wall, concrete, and remodeling projects we&rsquo;ve completed across the Omaha metro.</p>
-    <a class="btn-primary" href="https://schmidtportals.netlify.app/quote">Get a Free Estimate &rarr;</a>
-  </div>
-</header>
+<div id="projectMap" style="height: 50vh; width: 100%; border-radius: 0; border: none; box-shadow: none; margin-top: 76px; z-index: 1;"></div>
 
-
-<div class="wrap">
+<div class="wrap" style="padding-top: 40px;">
   <div class="crumbs"><a href="/">Home</a> &rsaquo; Project Map</div>
 </div>
 
-<section class="blk" id="map" style="background:var(--bg)">
+<section class="blk" id="map" style="background:var(--bg); padding-top: 20px;">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="accentbar"></div>
@@ -109,13 +100,11 @@
       <p>A sample of retaining wall, concrete, and remodeling projects we've completed across the Omaha metro — Omaha, Bellevue, Papillion, Elkhorn, Council Bluffs and beyond.</p>
     </div>
 
-    <div class="map-stats reveal d1">
+    <div class="map-stats reveal d1" style="margin-bottom: 20px;">
       <div class="map-stat"><div class="n" id="statTotal">20</div><div class="l">Projects mapped</div></div>
       <div class="map-stat"><div class="n" id="statCities">7</div><div class="l">Cities &amp; towns</div></div>
       <div class="map-stat"><div class="n">50</div><div class="l">Years in business</div></div>
     </div>
-
-    <div id="projectMap" class="reveal d1"></div>
 
     <div class="map-legend reveal">
       <span>🔵 <b>Completed</b> project</span>
