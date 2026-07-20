@@ -33,9 +33,9 @@
 <style>
   /* HERO — page-specific sizing (shell mechanics are in styles.css) */
   .hero{min-height:52vh}
-  .hero-inner{padding:80px 0}
-  .hero h1{color:#fff;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin-bottom:18px;text-shadow:0 3px 16px rgba(0,0,0,.7)}
-  .hero p.lead{color:#fff;font-size:1.15rem;max-width:46ch;margin-bottom:28px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .hero-inner{padding:80px 0; display: flex; flex-direction: column; align-items: center; text-align: center;}
+  .hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin-bottom:18px;}
+  .hero p.lead{font-size:1.15rem;max-width:46ch;margin-bottom:28px;}
   .hero .btn-primary{padding:14px 28px;font-size:1rem}
   .team{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center;margin-bottom:48px}
   .team.flip{grid-template-columns:1.3fr 1fr}
@@ -46,7 +46,7 @@
   .team-creds li{font-size:.88rem;color:var(--muted);display:flex;align-items:center;gap:8px}
   .team-creds li::before{content:'✓';color:var(--accent);font-weight:800}
   @media(max-width:760px){.team,.team.flip{grid-template-columns:1fr}.team img{max-width:280px;margin:0 auto}.team .team-text{order:2}.team.flip .team-text{order:1}}
-  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0}}
+  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0;}}
 </style>
 </head>
 <body>
@@ -93,11 +93,10 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-photo" style="background-image:url('images/timber-terraced-wide.jpg')"></div>
+<header class="hero hero-light">
   <div class="wrap hero-inner">
     <p class="eyebrow">Omaha, NE &middot; Est. 1973</p>
-    <h1>Meet the Schmidt Family</h1>
+    <h1>Meet the <span style="color:var(--accent)">Schmidt Family</span></h1>
     <p class="lead">Three generations committed to your property's protection and beauty.</p>
     <a class="btn-primary" href="https://schmidtportals.netlify.app/quote">Get a Free Estimate &rarr;</a>
   </div>

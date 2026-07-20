@@ -42,9 +42,9 @@
 <style>
   /* HERO — page-specific sizing (shell mechanics are in styles.css) */
   .hero{min-height:52vh}
-  .hero-inner{padding:80px 0}
-  .hero h1{color:#fff;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:18ch;margin-bottom:18px;text-shadow:0 3px 16px rgba(0,0,0,.7)}
-  .hero p.lead{color:#fff;font-size:1.15rem;max-width:46ch;margin-bottom:28px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .hero-inner{padding:80px 0; display: flex; flex-direction: column; align-items: center; text-align: center;}
+  .hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin-bottom:18px;}
+  .hero p.lead{font-size:1.15rem;max-width:46ch;margin-bottom:28px;}
   .hero .btn-primary{padding:14px 28px;font-size:1rem}
   .job{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
   .job-dept{display:inline-block;background:#EAF2FE;color:var(--accent-hover);border-radius:6px;padding:2px 10px;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}
@@ -53,7 +53,7 @@
   .job-meta{font-size:.82rem;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap}
   .job-meta b{color:var(--ink)}
   .job-apply{flex:none;align-self:center}
-  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0}.job{flex-direction:column}}
+  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0;}.job{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -100,11 +100,10 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-photo" style="background-image:url('images/block-wall-siena-tiered.jpg')"></div>
+<header class="hero hero-light">
   <div class="wrap hero-inner">
     <p class="eyebrow">Now Hiring &middot; Omaha, NE</p>
-    <h1>Join the Schmidt Construction Team</h1>
+    <h1>Join the <span style="color:var(--accent)">Schmidt Construction Team</span></h1>
     <p class="lead">We're a family-owned, Omaha-based construction company with 50+ years of excellence, looking for skilled professionals who take pride in their craft.</p>
     <a class="btn-primary" href="#openings">View Open Positions &rarr;</a>
   </div>
