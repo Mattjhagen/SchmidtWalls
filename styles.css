@@ -20,6 +20,7 @@ img{display:block;max-width:100%}
 a{color:var(--blue);text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:1152px;margin:0 auto;padding:0 24px}
+@media(max-width:640px){.wrap{padding:0 16px}}
 .eyebrow{color:var(--accent-light);font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 
 /* ============================================================
@@ -68,9 +69,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:8
 .mobile-menu.open{display:block}
 .mobile-menu a{display:block;color:var(--ink);text-decoration:none;font-size:1.05rem;font-weight:600;padding:14px 8px;border-bottom:1px solid var(--line)}
 .mobile-menu .m-group{color:var(--accent);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:18px 8px 4px}
-/* With 9 flat nav items, collapse to the mobile menu earlier so links never look crowded */
-@media(max-width:1700px){.navphone{display:none}}
-@media(max-width:1700px){.navlinks{display:none}.navburger{display:flex}}
+/* With 9 flat nav items, gently scale padding on medium screens and collapse on tablets */
+@media(max-width:1200px){.navlinks>a,.navitem>button{padding:8px 6px; font-size:.82rem;} .navphone{display:none}}
+@media(max-width:1080px){.navlinks{display:none}.navburger{display:flex}}
 @media(max-width:760px){.brand-logo{height:34px}}
 
 /* ============================================================
@@ -101,6 +102,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:8
 .btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(32,107,212,.5);text-decoration:none}
 .btn-ghost{border:1.5px solid rgba(255,255,255,.65);color:#fff;padding:15px 30px;border-radius:11px;font-weight:700;text-decoration:none;font-size:1.02rem;transition:background .2s,color .2s}
 .btn-ghost:hover{background:#fff;color:var(--ink);text-decoration:none}
+@media(max-width:640px){.btn-primary,.btn-ghost{padding:12px 24px; font-size:0.95rem;}}
 
 /* ============================================================
    GENERIC CONTENT-PAGE SECTIONS (contact/faq/gallery/reviews/
@@ -173,6 +175,7 @@ section.blk{padding:112px 0}
 footer{background:#0b1220;color:#94a3b8;padding:48px 24px;font-size:.85rem}
 .footer-inner{max-width:1152px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
 .footer-cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
+@media(max-width:1024px){.footer-cols{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.footer-cols{grid-template-columns:1fr}}
 .footer-brand{color:#fff;font-weight:800;font-size:1.1rem;margin-bottom:8px}
 .footer-brand span{color:var(--accent-light)}
