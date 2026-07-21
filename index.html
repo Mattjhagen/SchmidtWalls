@@ -144,10 +144,9 @@
   .hero-dot.active{background:#fff;transform:scale(1.25)}
 
   /* SERVICE GLASS CARDS */
-  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-  @media(max-width:960px){.grid4{grid-template-columns:repeat(2,1fr)}}
+  .grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
   @media(max-width:560px){.grid4{grid-template-columns:1fr}}
-  .card{position:relative;border-radius:18px;overflow:hidden;min-height:420px;display:flex;align-items:flex-end;color:#fff;text-decoration:none;
+  .card{position:relative;border-radius:18px;overflow:hidden;min-height:280px;display:flex;align-items:flex-end;color:#fff;text-decoration:none;
      box-shadow:0 8px 22px -12px rgba(15,23,42,.18);transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s}
   .card:hover{transform:translateY(-8px);box-shadow:0 20px 36px -16px rgba(15,23,42,.28)}
   .card .bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.16,1,.3,1)}
@@ -160,6 +159,7 @@
   /* SERVICE CARD BG PLACEHOLDERS */
   .card-retaining .bg{background:linear-gradient(135deg,#1e3a5f 0%,#2d5a3d 100%)}
   .card-landscape .bg{background:linear-gradient(135deg,#14532d 0%,#374151 100%)}
+  .grid4 .card .bg{background-size:cover;background-position:center}
 
   /* WHY US */
   .why{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
@@ -385,7 +385,7 @@
     </div>
     <div class="grid4">
       <a class="card card-retaining reveal" href="retaining-walls.html">
-        <div class="bg" style="background-image:url('images/schmidt-8in-siena-wall.jpg')"></div>
+        <div class="bg" style="background-image:url('images/card-retaining-tiered.jpg')"></div>
         <div class="glass">
           <h3>Retaining Wall Installation</h3>
           <p>Stone, timber, block &amp; commercial walls built with proper drainage.</p>
@@ -393,7 +393,7 @@
         </div>
       </a>
       <a class="card card-retaining reveal d1" href="concrete.html">
-        <div class="bg" style="background-image:url('images/card-concrete-driveway.png')"></div>
+        <div class="bg" style="background-image:url('images/card-driveway-sunny.jpg')"></div>
         <div class="glass">
           <h3>Concrete Driveways &amp; Patios</h3>
           <p>Durable flatwork engineered for Omaha's freeze/thaw cycles.</p>
@@ -401,7 +401,7 @@
         </div>
       </a>
       <a class="card card-retaining reveal d2" href="remodeling.html">
-        <div class="bg" style="background-image:url('images/card-kitchen.jpg')"></div>
+        <div class="bg" style="background-image:url('images/card-kitchen-remodel.jpg')"></div>
         <div class="glass">
           <h3>Kitchen Remodeling – IKEA Specialists</h3>
           <p>Full kitchen remodels &amp; IKEA cabinet installation.</p>
@@ -409,10 +409,10 @@
         </div>
       </a>
       <a class="card card-retaining reveal d3" href="concrete.html">
-        <div class="bg" style="background-image:url('images/card-concrete-steps.png')"></div>
+        <div class="bg" style="background-image:url('images/card-paver-patio.jpg')"></div>
         <div class="glass">
-          <h3>Concrete Steps &amp; Entryways</h3>
-          <p>Front porch steps, entryway landings &amp; decorative stairs.</p>
+          <h3>Paver Patios</h3>
+          <p>Custom paver patios, walkways &amp; outdoor living spaces.</p>
           <span class="more">Get an estimate →</span>
         </div>
       </a>
@@ -461,7 +461,7 @@
       </ul>
     </div>
     <div class="whyimg reveal d1">
-      <img src="images/schmidt-6in-siena-wall.jpg" alt="Schmidt Construction 6in Siena block retaining wall">
+      <img src="images/schmidt-owners-team.jpg" alt="The Schmidt Construction owners in front of their work trucks">
     </div>
   </div>
 </section>
