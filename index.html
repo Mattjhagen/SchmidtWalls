@@ -784,21 +784,6 @@
     });
   })();
 
-  // ============================================================
-  // ESTIMATE FORM SUBMISSION
-  // ------------------------------------------------------------
-  // Works on a static host (no backend needed) via Formspree.
-  // 1) Create a free form at https://formspree.io (uses Mikiel@schmidt-construction.com)
-  // 2) Paste your endpoint below, e.g. "https://formspree.io/f/abcdwxyz"
-  // If left blank, the form falls back to opening the visitor's email client (mailto).
-  // Later, to route into SchmidtAdmin instead, point FORM_ENDPOINT at your own /api/leads.
-        'Details:\n' + (data.message||'')
-      );
-      window.location.href = 'mailto:' + LEAD_EMAIL + '?subject=' + subject + '&body=' + body;
-      succeed();
-    }
-    return false;
-  }
 </script>
 <script>
   // ============================================================
