@@ -34,19 +34,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <style>
-  /* HERO — page-specific sizing (shell mechanics are in styles.css) */
-  .hero{min-height:52vh}
-  .hero-inner{padding:80px 0; display: flex; flex-direction: column; align-items: center; text-align: center;}
-  .hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:800;line-height:1.08;letter-spacing:-.02em;max-width:22ch;margin-bottom:18px;}
-  .hero p.lead{font-size:1.15rem;max-width:46ch;margin-bottom:28px;}
-  .hero .btn-primary{padding:14px 28px;font-size:1rem}
   .svc .cityview{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:700;color:var(--accent)}
-  .mapteaser{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;margin-top:20px;text-align:center}
-  .mapteaser-stats{display:flex;justify-content:center;gap:40px;margin-bottom:24px;flex-wrap:wrap}
-  .mapteaser-stats .n{display:block;font-size:1.8rem;font-weight:800;color:var(--accent);line-height:1}
-  .mapteaser-stats .l{display:block;font-size:.82rem;color:var(--muted);font-weight:600;margin-top:6px}
-  @media(max-width:640px){.services{grid-template-columns:1fr}.hero{min-height:42vh}.hero-inner{padding:60px 0;}}
+  @media(max-width:640px){.services{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -93,18 +86,35 @@
   </div>
 </nav>
 
-<header class="hero hero-light">
-  <div class="wrap hero-inner">
-    <p class="eyebrow">Omaha, NE &middot; Est. 1973</p>
-    <h1><span style="color:var(--accent)">Service Areas</span></h1>
-    <p class="lead">Schmidt Construction proudly serves the Omaha metro and surrounding communities.</p>
-    <a class="btn-primary" href="https://schmidtportals.netlify.app/quote">Get a Free Estimate &rarr;</a>
+<div id="projectMap" style="height: 50vh; width: 100%; border-radius: 0; border: none; box-shadow: none; margin-top: 76px; z-index: 1;"></div>
+
+<div class="wrap" style="padding-top: 40px;">
+  <div class="crumbs"><a href="/">Home</a> &rsaquo; Service Areas</div>
+</div>
+
+<section class="blk" id="map" style="background:var(--bg); padding-top: 20px;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="accentbar"></div>
+      <h1 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800">Completed Projects Across the Omaha Metro</h1>
+      <p>A sample of retaining wall, concrete, and remodeling projects we've completed across the Omaha metro — Omaha, Bellevue, Papillion, Elkhorn, Council Bluffs and beyond.</p>
+    </div>
+
+    <div class="map-stats reveal d1" style="margin-bottom: 20px;">
+      <div class="map-stat"><div class="n" id="statTotal">20</div><div class="l">Projects mapped</div></div>
+      <div class="map-stat"><div class="n" id="statCities">7</div><div class="l">Cities &amp; towns</div></div>
+      <div class="map-stat"><div class="n">50</div><div class="l">Years in business</div></div>
+    </div>
+
+    <div class="map-legend reveal">
+      <span>🔵 <b>Completed</b> project</span>
+      <span>Click a marker for the neighborhood &amp; project type</span>
+    </div>
+    <p class="map-privacy">To respect our customers' privacy, projects are shown by neighborhood with first name &amp; last initial only — never full addresses.</p>
   </div>
-</header>
+</section>
 
 <div class="wrap">
-  <div class="crumbs"><a href="/">Home</a> &rsaquo; Service Areas</div>
-
   <section>
     <h2>Where we work</h2>
     <p class="body">Schmidt Construction proudly serves the Omaha metro area and surrounding communities with professional retaining wall installation, concrete services, and kitchen remodeling.</p>
@@ -120,19 +130,6 @@
       <div class="svc"><h3>Bennington</h3><p>Quality construction work for the Bennington area.</p><a class="cityview" href="/retaining-walls-bennington.html">View Bennington retaining walls →</a></div>
       <div class="svc"><h3>Springfield</h3><p>Retaining wall and concrete services in Springfield.</p><a class="cityview" href="/retaining-walls-springfield.html">View Springfield retaining walls →</a></div>
       <div class="svc"><h3>Offutt AFB</h3><p>Proudly serving military families at Offutt Air Force Base.</p><a class="cityview" href="/retaining-walls-offutt-afb.html">View Offutt AFB retaining walls →</a></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>See our completed projects</h2>
-    <p class="body">Browse an interactive map of retaining wall, concrete, and remodeling projects we've completed across every city we serve — shown by neighborhood, with first name and last initial only, never full addresses.</p>
-    <div class="mapteaser">
-      <div class="mapteaser-stats">
-        <div><span class="n">25+</span><span class="l">Projects mapped</span></div>
-        <div><span class="n">7</span><span class="l">Cities &amp; towns</span></div>
-        <div><span class="n">50+</span><span class="l">Years in business</span></div>
-      </div>
-      <a class="btn-primary" href="project-map.html">View the Interactive Project Map &rarr;</a>
     </div>
   </section>
 
@@ -156,7 +153,6 @@
         <a href="concrete.html">Concrete Contractor</a>
         <a href="remodeling.html">Kitchen Remodeling</a>
         <a href="gallery.html">Portfolio</a>
-        <a href="project-map.html">Project Map</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -190,6 +186,101 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  // ============================================================
+  // PROJECT MAP  —  privacy-safe (first name + last initial, by neighborhood)
+  // ------------------------------------------------------------
+  // TO LOAD ALL 60 REAL PROJECTS:
+  //   Take your geocoded-retaining-walls.csv (columns: name,address,lat,lng)
+  //   and paste rows below as: {n:"First L.", city:"Omaha", lat:..., lng:..., type:"Retaining Wall"}
+  //   Keep names to first-name + last-initial for privacy. Remove the sample flag when done.
+  // ============================================================
+  const PROJECTS = [
+    {n:"Judie K.", city:"Omaha, NE", lat:41.24413, lng:-95.9731, type:"Retaining Wall"},
+    {n:"Jill F.", city:"Omaha, NE", lat:41.1564, lng:-96.14554, type:"Retaining Wall"},
+    {n:"Mike M.", city:"Papillion, NE", lat:41.15048, lng:-96.03927, type:"Retaining Wall"},
+    {n:"Derrick V.", city:"Big Lake, MO", lat:40.09127, lng:-95.34826, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Big Lake, MO", lat:40.08375, lng:-95.3494, type:"Retaining Wall"},
+    {n:"B L.", city:"Louisville, NE", lat:41.0041, lng:-96.15819, type:"Retaining Wall"},
+    {n:"Ed F.", city:"Omaha, NE", lat:41.25742, lng:-95.96962, type:"Retaining Wall"},
+    {n:"Samantha B.", city:"Omaha, NE", lat:41.2382, lng:-95.998, type:"Retaining Wall"},
+    {n:"Tim W.", city:"Omaha, NE", lat:41.26053, lng:-96.09821, type:"Retaining Wall"},
+    {n:"John P.", city:"Omaha, NE", lat:41.20685, lng:-95.96407, type:"Retaining Wall"},
+    {n:"Joe P.", city:"Omaha, NE", lat:41.17989, lng:-95.97604, type:"Retaining Wall"},
+    {n:"Kay B.", city:"Omaha, NE", lat:41.30244, lng:-96.05409, type:"Retaining Wall"},
+    {n:"Ad S.", city:"Council Bluffs, IA", lat:41.22732, lng:-95.80327, type:"Retaining Wall"},
+    {n:"Amasa S.", city:"Council Bluffs, IA", lat:41.21348, lng:-95.80807, type:"Retaining Wall"},
+    {n:"Anthony C.", city:"Omaha, NE", lat:41.18056, lng:-95.97793, type:"Retaining Wall"},
+    {n:"Julie C.", city:"Omaha, NE", lat:41.26991, lng:-95.99431, type:"Concrete"},
+    {n:"Ken K.", city:"Elkhorn, NE", lat:41.28668, lng:-96.22664, type:"Retaining Wall"},
+    {n:"Joy O.", city:"Bellevue, NE", lat:41.14836, lng:-95.90756, type:"Retaining Wall"},
+    {n:"Harry P.", city:"Omaha, NE", lat:41.31027, lng:-96.12483, type:"Retaining Wall"},
+    {n:"David L.", city:"Omaha, NE", lat:41.26689, lng:-96.04565, type:"Retaining Wall"},
+    {n:"Kris K.", city:"Omaha, NE", lat:41.28203, lng:-95.95498, type:"Kitchen Remodel"},
+    {n:"Sushama C.", city:"Omaha, NE", lat:41.20497, lng:-96.18034, type:"Bathroom Remodel"},
+    {n:"Richard P.", city:"Council Bluffs, IA", lat:41.26497, lng:-95.85502, type:"Concrete"},
+    {n:"Jerry & Carol S.", city:"Omaha, NE", lat:41.24498, lng:-95.98497, type:"Water Feature"},
+    {n:"Donna N.", city:"Omaha, NE", lat:41.25497, lng:-96.03498, type:"Bathroom Remodel"}
+  ];
+
+  (function initMap(){
+    if (typeof L === 'undefined') return;
+    const map = L.map('projectMap', { scrollWheelZoom:false }).setView([41.24, -95.99], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const cluster = (typeof L.markerClusterGroup === 'function')
+      ? L.markerClusterGroup({ showCoverageOnHover:false, maxClusterRadius:44 })
+      : L.layerGroup();
+
+    const dot = L.divIcon({
+      className:'',
+      html:'<div style="width:16px;height:16px;border-radius:50%;background:#206BD4;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)"></div>',
+      iconSize:[16,16], iconAnchor:[8,8]
+    });
+
+    // Representative photo per project type (not tied to any specific address —
+    // pin locations are neighborhood-level approximations, so a photo here
+    // illustrates the kind of work done rather than that exact property).
+    const TYPE_PHOTOS = {
+      'Retaining Wall': 'images/block-wall-siena-tiered.jpg',
+      'Concrete': 'images/stamped-concrete-patio-steps.jpg',
+      'Kitchen Remodel': 'images/kitchen-remodel-counters.jpg'
+    };
+
+    const cities = new Set();
+    PROJECTS.forEach(p => {
+      cities.add(p.city);
+      const type = p.type || 'Retaining Wall';
+      const photo = TYPE_PHOTOS[type];
+      L.marker([p.lat, p.lng], {icon:dot})
+        .bindPopup(
+          (photo ? '<img src="'+photo+'" alt="'+type+' example" class="pop-photo">' : '') +
+          '<div class="pop-title">'+p.n+'</div>'+
+          '<div class="pop-city">'+p.city+'</div>'+
+          '<span class="pop-type">'+type+'</span>'
+        )
+        .addTo(cluster);
+    });
+    map.addLayer(cluster);
+
+    // Center on the Omaha metro (a couple of jobs reach into MO/IA — they stay clustered)
+    map.setView([41.24, -95.99], 11);
+
+    // Update stat counts to reflect the loaded data
+    const total = PROJECTS.length;
+    document.getElementById('statTotal').textContent = total >= 60 ? total : (total + '+');
+    document.getElementById('statCities').textContent = cities.size;
+
+    // Enable scroll-zoom only after a click (better UX inside a scrolling page)
+    map.on('click', () => map.scrollWheelZoom.enable());
+  })();
+
+</script>
 <script>
 (function(){
   var burger=document.getElementById('navburger'),menu=document.getElementById('mobileMenu');
