@@ -497,7 +497,7 @@
       <h2>Recent Retaining Wall &amp; Hardscape Projects</h2>
       <p>Real work from around the Omaha metro — block, timber, and boulder retaining walls built to last.</p>
     </div>
-    <div class="gallery reveal d1" id="galleryGrid">
+    <div class="gallery reveal d1" id="galleryGrid" data-sc-portfolio="featured">
       <div class="gitem" data-full="images/schmidt-6in-siena-wall.jpg" data-cap="6in Siena block retaining wall — Omaha, NE"><img src="images/schmidt-6in-siena-wall.jpg" alt="6in Siena block retaining wall Omaha"><div class="cap">6in Siena Block Wall</div></div>
       <div class="gitem" data-full="images/schmidt-block-wall.jpg" data-cap="Block retaining wall project"><img src="images/schmidt-block-wall.jpg" alt="Block retaining wall project"><div class="cap">Block Retaining Wall</div></div>
       <div class="gitem" data-full="images/schmidt-retaining-wall.jpg" data-cap="Retaining wall — Schmidt Construction"><img src="images/schmidt-retaining-wall.jpg" alt="Schmidt Construction retaining wall"><div class="cap">Retaining Wall Project</div></div>
@@ -756,14 +756,17 @@
   ba.addEventListener('touchstart', e => setpos(e.touches[0].clientX), { passive: true });
   ba.addEventListener('touchmove', e => setpos(e.touches[0].clientX), { passive: true });
 
-  // Gallery lightbox
+  // Gallery lightbox (event delegation — items can be swapped in live from the Site Editor)
   (function(){
-    const items = Array.from(document.querySelectorAll('#galleryGrid .gitem'));
+    const grid = document.getElementById('galleryGrid');
+    const liveItems = () => Array.from(grid.querySelectorAll('.gitem'));
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCap = document.getElementById('lbCap');
     let idx = 0;
     function show(i){
+      const items = liveItems();
+      if (!items.length) return;
       idx = (i + items.length) % items.length;
       const el = items[idx];
       lbImg.src = el.dataset.full;
@@ -771,7 +774,10 @@
     }
     function open(i){ show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
     function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); }
-    items.forEach((el,i)=> el.addEventListener('click', ()=>open(i)));
+    grid.addEventListener('click', (e)=>{
+      const el = e.target.closest('.gitem');
+      if (el) open(liveItems().indexOf(el));
+    });
     document.getElementById('lbClose').addEventListener('click', close);
     document.getElementById('lbNext').addEventListener('click', ()=>show(idx+1));
     document.getElementById('lbPrev').addEventListener('click', ()=>show(idx-1));
@@ -909,5 +915,6 @@
     timer = setInterval(() => goTo(current + 1), 5000);
   })();
 </script>
+<script src="site-content.js" defer></script>
 </body>
 </html>
