@@ -13,8 +13,8 @@
 (function () {
   'use strict';
 
-  var SUPABASE_URL = 'https://bumbtuwjukbxfnyrjhti.supabase.co';
-  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1bWJ0dXdqdWtieGZueXJqaHRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4NDY1MDIsImV4cCI6MjA5ODQyMjUwMn0.wVf980l6JlGMoVHctVVhz2pTc72kSLLGTNOEX8lOCn4';
+  var SUPABASE_URL = 'https://hrrofmyuatuzjzrgyezo.supabase.co';
+  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhycm9mbXl1YXR1emp6cmd5ZXpvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2NjY1ODQsImV4cCI6MjEwMDI0MjU4NH0.5qaVxVlk-ICZZTiaEpnT-A9ywYiLdGilKd3eElex3Pw';
 
   function fetchTable(path) {
     return fetch(SUPABASE_URL + '/rest/v1/' + path, {
